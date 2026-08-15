@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Puhu Studios — Cozy Puzzle Games</title>
-<meta name="description" content="Puhu Studios crafts cozy, beautiful puzzle games. Play Solimage — the image puzzle that takes you around the world.">
-<meta property="og:title" content="Puhu Studios — Cozy Puzzle Games">
-<meta property="og:description" content="Play Solimage — the image puzzle that takes you around the world.">
+<meta name="description" content="Puhu Studios crafts playful mobile games. Play Solimage — the image puzzle that takes you around the world — and Guess Words: UpDown, the party game that gets everyone shouting.">
+<meta property="og:title" content="Puhu Studios — Fun Mobile Games">
+<meta property="og:description" content="Play Solimage — the image puzzle — and Guess Words: UpDown, the party game.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://games.puhustudios.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -193,6 +193,24 @@
   .game-shots .shot:nth-child(2){transform:translateY(22px)}
   .game-shots .shot:nth-child(2):hover{transform:translateY(14px)}
 
+  /* ---------- UpDown (landscape game) ---------- */
+  .game-card.updown{background:linear-gradient(160deg,#4d84d8,#2f5fae)}
+  .updown .game-icon img{object-position:50% 12%}
+  .land-note{
+    display:inline-flex;align-items:center;gap:.5rem;font-weight:800;font-size:.85rem;
+    background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.35);
+    padding:.35rem .9rem;border-radius:999px;margin-bottom:1.1rem;
+  }
+  .land-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;
+    padding:0 3rem 3rem;position:relative;z-index:1;
+  }
+  .land-grid .landshot{
+    border-radius:18px;border:5px solid #fff;overflow:hidden;background:#fff;
+    box-shadow:0 12px 28px rgba(0,0,0,.3);transition:transform .25s ease;
+  }
+  .land-grid .landshot:hover{transform:translateY(-6px)}
+
   /* ---------- discover strip ---------- */
   #discover{background:linear-gradient(160deg,#8e4f86,#6d3a70);color:#fff}
   .strip{
@@ -249,6 +267,7 @@
     .fan .s2{width:204px}
     .game-card .inner{grid-template-columns:1fr;padding:2.4rem 1.6rem}
     .game-shots .shot{width:150px}
+    .land-grid{grid-template-columns:1fr;padding:0 1.6rem 2.4rem}
     #about .cards{grid-template-columns:1fr;max-width:460px;margin:0 auto}
     nav ul{display:none}
   }
@@ -269,8 +288,8 @@
     <a class="logo" href="#top"><span class="owl">🦉</span> Puhu Studios</a>
     <nav>
       <ul>
-        <li><a href="#games">Games</a></li>
-        <li><a href="#discover">Discover</a></li>
+        <li><a href="#games">Solimage</a></li>
+        <li><a href="#updown">UpDown</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -282,18 +301,18 @@
 <section class="hero diamonds" id="top">
   <div class="hero-inner">
     <div class="hero-copy">
-      <span class="hero-badge">🧩 Cozy puzzle games, made with care</span>
-      <h1>Puzzles that take you <span class="pop">around the world</span></h1>
-      <p>We're Puhu Studios — an indie studio crafting beautiful, relaxing puzzle games. Solve, discover, and collect the world's most stunning places, one tile at a time.</p>
+      <span class="hero-badge">🎮 Fun mobile games, made with care</span>
+      <h1>Games that bring <span class="pop">people together</span></h1>
+      <p>We're Puhu Studios — an indie studio crafting playful mobile games. A cozy puzzle that takes you around the world, and a party game that gets the whole room shouting.</p>
       <div class="hero-cta">
-        <a class="btn btn-green" href="#games">Play Solimage</a>
+        <a class="btn btn-green" href="#games">Our games</a>
         <a class="btn btn-ghost" href="#about">About us</a>
       </div>
     </div>
     <div class="fan" aria-hidden="true">
       <div class="shot s1"><img src="screen-discover.webp" alt="" loading="eager"></div>
       <div class="shot s2"><img src="screen-home.webp" alt="" loading="eager"></div>
-      <div class="shot s3"><img src="screen-puzzle.webp" alt="" loading="eager"></div>
+      <div class="shot s3"><img src="updown-home.webp" alt="" loading="eager"></div>
     </div>
   </div>
 </section>
@@ -304,8 +323,8 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="ribbon">OUR GAMES</span>
-      <h2>Featured: Solimage — Image Puzzle</h2>
-      <p>Our first title. A fresh take on picture puzzles with a solitaire twist.</p>
+      <h2>Made to be played, together</h2>
+      <p>A cozy puzzle that takes you around the world, and a party game that turns any room into game night.</p>
     </div>
     <div class="game-card diamonds reveal">
       <div class="inner">
@@ -359,6 +378,59 @@
       <div class="shot"><img src="screen-landmark.webp" alt="Landmark story card — Sagrada Família" loading="lazy"><div class="caption">Unlock its story</div></div>
       <div class="shot"><img src="screen-discover.webp" alt="Discover album — Italy and France collections" loading="lazy"><div class="caption">Grow your album</div></div>
       <div class="shot"><img src="screen-profile.webp" alt="Profile customization" loading="lazy"><div class="caption">Make it yours</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= UPDOWN ================= -->
+<section id="updown">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="ribbon blue">NEW GAME</span>
+      <h2>Guess Words: UpDown</h2>
+      <p>Our brand-new party game. Describe the word, don't say it — then tilt to score!</p>
+    </div>
+    <div class="game-card updown diamonds reveal">
+      <div class="inner">
+        <div>
+          <div class="game-title">
+            <div class="game-icon"><img src="updown-home.webp" alt="Guess Words: UpDown icon"></div>
+            <div>
+              <span class="sub">Party Game</span>
+              <h3>Guess Words: UpDown</h3>
+            </div>
+          </div>
+          <span class="land-note">🔄 Played in landscape — hold the phone up and go!</span>
+          <p class="desc">Split into teams, pick your categories, and race the clock. Teammates describe the big word on screen — guess it and tilt up, stuck and tilt down. Loudest team wins!</p>
+          <ul class="feat-list">
+            <li><span class="ico">🎉</span> The perfect party game for friends &amp; family</li>
+            <li><span class="ico">📱</span> Tilt up for correct, tilt down to pass — hands-free scoring</li>
+            <li><span class="ico">🗂️</span> Tons of categories — movies, office, wedding, TV &amp; more</li>
+            <li><span class="ico">⚙️</span> Custom rounds, timers, difficulty and scoring</li>
+          </ul>
+          <div class="store-badges">
+            <a class="store-badge" href="#" onclick="return false;" aria-disabled="true">
+              <span class="glyph"></span>
+              <span><small>Download on the</small><strong>App Store</strong></span>
+            </a>
+            <a class="store-badge" href="#" onclick="return false;" aria-disabled="true">
+              <span class="glyph">▶</span>
+              <span><small>Get it on</small><strong>Google Play</strong></span>
+            </a>
+            <span class="soon-tag">Coming soon</span>
+          </div>
+        </div>
+        <div class="game-shots">
+          <div class="shot"><img src="updown-team.webp" alt="Guess Words: UpDown — team ready screen" loading="lazy"></div>
+          <div class="shot"><img src="updown-categories.webp" alt="Guess Words: UpDown — category selection" loading="lazy"></div>
+        </div>
+      </div>
+      <div class="land-grid">
+        <div class="landshot"><img src="updown-tide.webp" alt="Gameplay — describing the word Tide" loading="lazy"><div class="caption">Describe the big word</div></div>
+        <div class="landshot"><img src="updown-correct.webp" alt="Correct answer screen" loading="lazy"><div class="caption">Tilt up — correct!</div></div>
+        <div class="landshot"><img src="updown-wrong.webp" alt="Wrong answer screen" loading="lazy"><div class="caption">Tilt down — pass</div></div>
+        <div class="landshot"><img src="updown-break.webp" alt="Break screen between turns" loading="lazy"><div class="caption">Catch your breath between rounds</div></div>
+      </div>
     </div>
   </div>
 </section>
