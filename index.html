@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Puhu Studios — Playful Mobile Games</title>
-<meta name="description" content="Puhu Studios crafts playful mobile games. Play Solimage — the image puzzle that takes you around the world — and Guess Words: UpDown, the party game that gets everyone shouting.">
+<meta name="description" content="Puhu Studios crafts playful mobile games — Solimage, the image puzzle that takes you around the world, plus two party games: Guess Words: UpDown and Forbidden Words Game: TabuTabu.">
 <meta property="og:title" content="Puhu Studios — Playful Mobile Games">
-<meta property="og:description" content="Play Solimage — the image puzzle — and Guess Words: UpDown, the party game.">
+<meta property="og:description" content="Solimage, Guess Words: UpDown and Forbidden Words Game: TabuTabu — playful mobile games by Puhu Studios.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://games.puhustudios.com">
 <meta property="og:image" content="https://games.puhustudios.com/icon-solimage.webp">
@@ -124,21 +124,26 @@
 
   /* floating app icons */
   .icon-stage{
-    position:relative;margin:4.2rem auto 0;max-width:780px;
-    display:flex;justify-content:center;gap:clamp(1.6rem,7vw,4.5rem);
+    position:relative;margin:4.2rem auto 0;max-width:980px;
+    display:flex;justify-content:center;align-items:flex-start;
+    gap:clamp(1rem,4vw,3.2rem);flex-wrap:wrap;
   }
-  .app-tile{display:flex;flex-direction:column;align-items:center;gap:1rem}
+  .app-tile{
+    display:flex;flex-direction:column;align-items:center;gap:1rem;
+    flex:0 1 200px;max-width:210px;text-align:center;
+  }
   .app-tile .icon{
-    width:clamp(150px,21vw,212px);height:clamp(150px,21vw,212px);
+    width:100%;aspect-ratio:1;
     border-radius:24%;overflow:hidden;
     box-shadow:var(--shadow-lg);
     transition:transform .3s ease;
   }
   .app-tile:nth-child(1) .icon{transform:rotate(-5deg);animation:bob 5.5s ease-in-out infinite}
-  .app-tile:nth-child(2) .icon{transform:rotate(5deg);animation:bob 5.5s ease-in-out 2.75s infinite}
+  .app-tile:nth-child(2) .icon{animation:bob 5.5s ease-in-out 1.8s infinite}
+  .app-tile:nth-child(3) .icon{transform:rotate(5deg);animation:bob 5.5s ease-in-out 3.6s infinite}
   .app-tile:hover .icon{transform:rotate(0) scale(1.05);animation-play-state:paused}
   @keyframes bob{0%,100%{translate:0 0}50%{translate:0 -12px}}
-  .app-tile .name{font-weight:900;font-size:1.05rem}
+  .app-tile .name{font-weight:900;font-size:1rem;line-height:1.25}
   .app-tile .genre{font-weight:800;font-size:.8rem;color:var(--muted);margin-top:-.7rem;letter-spacing:.4px;text-transform:uppercase}
 
   /* ---------- sections ---------- */
@@ -187,6 +192,9 @@
   }
   .ico.green{background:#dcf5e6}
   .ico.blue{background:#dfeaff}
+  .ico.purple{background:#ece2ff}
+  .sub.purple{color:#6d28d9}
+  .game-sec.tinted{background:linear-gradient(180deg,#faf7ff,#f4eefe)}
 
   .badges{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
   .store{
@@ -299,7 +307,10 @@
   }
   @media (max-width:520px){
     .hero{padding-top:8rem}
-    .icon-stage{margin-top:3rem}
+    .icon-stage{margin-top:3rem;gap:1.1rem 1rem}
+    .app-tile{flex:0 1 132px}
+    .app-tile .name{font-size:.88rem}
+    .app-tile .genre{font-size:.7rem}
     .shots-p{gap:.7rem}
     .shots-p .ph{max-width:170px;border-width:3px}
   }
@@ -317,6 +328,7 @@
       <ul>
         <li><a href="#solimage">Solimage</a></li>
         <li><a href="#updown">UpDown</a></li>
+        <li><a href="#tabutabu">TabuTabu</a></li>
         <li><a href="#about">About</a></li>
       </ul>
     </nav>
@@ -329,7 +341,7 @@
   <div class="hero-inner">
     <span class="chip"><span class="dot"></span> Indie game studio</span>
     <h1>Playful games,<br><span class="grad">crafted with heart</span></h1>
-    <p>We're Puhu Studios. We make mobile games that are easy to pick up and hard to put down — cozy puzzles for quiet moments and party games for loud ones.</p>
+    <p>We're Puhu Studios. We make mobile games that are easy to pick up and hard to put down — a cozy puzzle for quiet moments and two party games for loud ones.</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#solimage">Explore our games</a>
       <a class="btn btn-outline" href="#about">About the studio</a>
@@ -346,6 +358,11 @@
       <span class="name">Guess Words: UpDown</span>
       <span class="genre">Party Game</span>
     </a>
+    <a class="app-tile" href="#tabutabu">
+      <span class="icon"><img src="icon-tabutabu.webp" alt="Forbidden Words Game: TabuTabu app icon"></span>
+      <span class="name">TabuTabu</span>
+      <span class="genre">Party Game</span>
+    </a>
   </div>
 </section>
 
@@ -354,8 +371,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="tag">Our Games</span>
-      <h2>Two games, twice the fun</h2>
-      <p>A cozy puzzle that takes you around the world, and a party game that turns any room into game night.</p>
+      <h2>Three games, three kinds of fun</h2>
+      <p>A cozy puzzle that takes you around the world, and two party games that turn any room into game night.</p>
     </div>
     <div class="g-grid reveal">
       <div class="copy">
@@ -440,6 +457,48 @@
       <figure><img src="updown-correct.webp" alt="Correct answer screen" loading="lazy"><figcaption>Tilt up — correct!</figcaption></figure>
       <figure><img src="updown-wrong.webp" alt="Wrong answer screen" loading="lazy"><figcaption>Tilt down — pass</figcaption></figure>
       <figure><img src="updown-break.webp" alt="Break screen between turns" loading="lazy"><figcaption>Catch your breath between rounds</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TABUTABU ================= -->
+<section class="game-sec tinted" id="tabutabu">
+  <div class="wrap">
+    <div class="g-grid reveal">
+      <div class="copy">
+        <div class="g-head">
+          <span class="g-icon"><img src="icon-tabutabu.webp" alt=""></span>
+          <div>
+            <span class="sub purple">Party Game</span>
+            <h3>Forbidden Words Game: TabuTabu</h3>
+          </div>
+        </div>
+        <p class="lead">The classic word-describing challenge, reimagined. Get your team to say the word on the card — but every card hides five forbidden words you're not allowed to use. Swipe right for a hit, left if you slip, up to pass.</p>
+        <ul class="feats">
+          <li><span class="ico purple">🚫</span> Five forbidden words per card</li>
+          <li><span class="ico purple">👆</span> Swipe to score — fast and intuitive</li>
+          <li><span class="ico purple">⚡</span> Power-ups: extra time, double points, new card</li>
+          <li><span class="ico purple">📊</span> Round summaries with every word you played</li>
+        </ul>
+        <div class="badges">
+          <a class="store" href="#" onclick="return false;" aria-disabled="true">
+            <span class="glyph"></span>
+            <span><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <a class="store" href="#" onclick="return false;" aria-disabled="true">
+            <span class="glyph">▶</span>
+            <span><small>Get it on</small><strong>Google Play</strong></span>
+          </a>
+          <span class="soon">Coming soon</span>
+        </div>
+      </div>
+      <div class="media">
+        <div class="shots-p">
+          <div class="ph"><img src="tabu-home.webp" alt="TabuTabu home screen with two teams" loading="lazy"></div>
+          <div class="ph"><img src="tabu-card.webp" alt="TabuTabu word card with forbidden words" loading="lazy"></div>
+          <div class="ph"><img src="tabu-summary.webp" alt="TabuTabu round summary" loading="lazy"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
