@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Puhu Studios — Playful Mobile Games</title>
-<meta name="description" content="Puhu Studios crafts playful mobile games — Solimage, the image puzzle that takes you around the world, plus two party games: Guess Words: UpDown and Forbidden Words Game: TabuTabu.">
+<meta name="description" content="Puhu Studios crafts playful mobile games — Solimage, Word Association: Groups, Guess Words: UpDown and Forbidden Words Game: TabuTabu.">
 <meta property="og:title" content="Puhu Studios — Playful Mobile Games">
-<meta property="og:description" content="Solimage, Guess Words: UpDown and Forbidden Words Game: TabuTabu — playful mobile games by Puhu Studios.">
+<meta property="og:description" content="Solimage, Word Association: Groups, Guess Words: UpDown and Forbidden Words Game: TabuTabu — playful mobile games by Puhu Studios.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://games.puhustudios.com">
 <meta property="og:image" content="https://games.puhustudios.com/icon-solimage.webp">
@@ -194,7 +194,10 @@
   .ico.blue{background:#dfeaff}
   .ico.purple{background:#ece2ff}
   .sub.purple{color:#6d28d9}
+  .ico.sky{background:#d9edff}
+  .sub.sky{color:#0369a1}
   .game-sec.tinted{background:linear-gradient(180deg,#faf7ff,#f4eefe)}
+  .game-sec.sky-bg{background:linear-gradient(180deg,#f2f9ff,#e8f3fd)}
 
   .badges{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
   .store{
@@ -327,6 +330,7 @@
     <nav>
       <ul>
         <li><a href="#solimage">Solimage</a></li>
+        <li><a href="#groups">Groups</a></li>
         <li><a href="#updown">UpDown</a></li>
         <li><a href="#tabutabu">TabuTabu</a></li>
         <li><a href="#about">About</a></li>
@@ -341,7 +345,7 @@
   <div class="hero-inner">
     <span class="chip"><span class="dot"></span> Indie game studio</span>
     <h1>Playful games,<br><span class="grad">crafted with heart</span></h1>
-    <p>We're Puhu Studios. We make mobile games that are easy to pick up and hard to put down — a cozy puzzle for quiet moments and two party games for loud ones.</p>
+    <p>We're Puhu Studios. We make mobile games that are easy to pick up and hard to put down — brain-teasing puzzles for quiet moments and party games for loud ones.</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="#solimage">Explore our games</a>
       <a class="btn btn-outline" href="#about">About the studio</a>
@@ -352,6 +356,11 @@
       <span class="icon"><img src="icon-solimage.webp" alt="Solimage — Image Puzzle app icon"></span>
       <span class="name">Solimage</span>
       <span class="genre">Image Puzzle</span>
+    </a>
+    <a class="app-tile" href="#groups">
+      <span class="icon"><img src="icon-groups.webp" alt="Word Association: Groups app icon"></span>
+      <span class="name">Word Association: Groups</span>
+      <span class="genre">Word Puzzle</span>
     </a>
     <a class="app-tile" href="#updown">
       <span class="icon"><img src="icon-updown.webp" alt="Guess Words: UpDown app icon"></span>
@@ -371,8 +380,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="tag">Our Games</span>
-      <h2>Three games, three kinds of fun</h2>
-      <p>A cozy puzzle that takes you around the world, and two party games that turn any room into game night.</p>
+      <h2>Four games, four kinds of fun</h2>
+      <p>Two puzzles to sink into on your own, and two party games that turn any room into game night.</p>
     </div>
     <div class="g-grid reveal">
       <div class="copy">
@@ -413,10 +422,52 @@
   </div>
 </section>
 
+<!-- ================= GROUPS ================= -->
+<section class="game-sec sky-bg" id="groups">
+  <div class="wrap">
+    <div class="g-grid flip reveal">
+      <div class="copy">
+        <div class="g-head">
+          <span class="g-icon"><img src="icon-groups.webp" alt=""></span>
+          <div>
+            <span class="sub sky">Word Puzzle</span>
+            <h3>Word Association: Groups</h3>
+          </div>
+        </div>
+        <p class="lead">Every board hides a category — Winter, School, Summer — and every word on it belongs to that category. Tap letters to fill the blanks, follow the clues, and complete the whole group before your lives run out.</p>
+        <ul class="feats">
+          <li><span class="ico sky">🔗</span> One category, every word connected</li>
+          <li><span class="ico sky">🎨</span> Matching colors reveal repeated letters</li>
+          <li><span class="ico sky">❤️</span> Three lives — think before you tap</li>
+          <li><span class="ico sky">🛠️</span> Boosters when a word just won't come</li>
+        </ul>
+        <div class="badges">
+          <a class="store" href="#" onclick="return false;" aria-disabled="true">
+            <span class="glyph"></span>
+            <span><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <a class="store" href="#" onclick="return false;" aria-disabled="true">
+            <span class="glyph">▶</span>
+            <span><small>Get it on</small><strong>Google Play</strong></span>
+          </a>
+          <span class="soon">Coming soon</span>
+        </div>
+      </div>
+      <div class="media">
+        <div class="shots-p">
+          <div class="ph"><img src="wa-home.webp" alt="Word Association: Groups home screen" loading="lazy"></div>
+          <div class="ph"><img src="wa-winter.webp" alt="Winter category board in progress" loading="lazy"></div>
+          <div class="ph"><img src="wa-solved.webp" alt="School category board nearly solved" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= UPDOWN ================= -->
 <section class="game-sec alt" id="updown">
   <div class="wrap">
-    <div class="g-grid flip reveal">
+    <div class="g-grid reveal">
       <div class="copy">
         <div class="g-head">
           <span class="g-icon"><img src="icon-updown.webp" alt=""></span>
@@ -464,7 +515,7 @@
 <!-- ================= TABUTABU ================= -->
 <section class="game-sec tinted" id="tabutabu">
   <div class="wrap">
-    <div class="g-grid reveal">
+    <div class="g-grid flip reveal">
       <div class="copy">
         <div class="g-head">
           <span class="g-icon"><img src="icon-tabutabu.webp" alt=""></span>
