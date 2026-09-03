@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Puhu Studios — Playful Mobile Games</title>
-<meta name="description" content="Puhu Studios crafts playful mobile games — Solimage, Word Association: Groups, Guess Words: UpDown and Forbidden Words Game: TabuTabu.">
+<meta name="description" content="Puhu Studios crafts playful mobile games — Solimage, Word Association: Groups, Guess Words: UpDown, Forbidden Words Game: TabuTabu and English Words: Speak Up.">
 <meta property="og:title" content="Puhu Studios — Playful Mobile Games">
-<meta property="og:description" content="Solimage, Word Association: Groups, Guess Words: UpDown and Forbidden Words Game: TabuTabu — playful mobile games by Puhu Studios.">
+<meta property="og:description" content="Solimage, Word Association: Groups, Guess Words: UpDown, Forbidden Words Game: TabuTabu and English Words: Speak Up — playful mobile games by Puhu Studios.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://games.puhustudios.com">
 <meta property="og:image" content="https://games.puhustudios.com/icon-solimage.webp">
@@ -196,8 +196,23 @@
   .sub.purple{color:#6d28d9}
   .ico.sky{background:#d9edff}
   .sub.sky{color:#0369a1}
+  .ico.amber{background:#fef0cf}
+  .sub.amber{color:#946200}
   .game-sec.tinted{background:linear-gradient(180deg,#faf7ff,#f4eefe)}
   .game-sec.sky-bg{background:linear-gradient(180deg,#f2f9ff,#e8f3fd)}
+  .game-sec.night{background:linear-gradient(160deg,#0b1220,#131c30);color:#fff;overflow:hidden}
+  .game-sec.night::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(560px 320px at 12% 8%, rgba(245,169,0,.14), transparent 60%),
+      radial-gradient(600px 360px at 88% 92%, rgba(139,92,246,.16), transparent 60%);
+  }
+  .game-sec.night .lead{color:rgba(255,255,255,.76)}
+  .game-sec.night .sub.amber{color:var(--gold)}
+  .game-sec.night .feats li{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:#fff}
+  .game-sec.night .ico.amber{background:rgba(245,169,0,.22)}
+  .game-sec.night .store{background:#fff;color:#0f1b2d}
+  .game-sec.night .shots-p .ph{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
 
   .badges{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
   .store{
@@ -333,6 +348,7 @@
         <li><a href="#groups">Groups</a></li>
         <li><a href="#updown">UpDown</a></li>
         <li><a href="#tabutabu">TabuTabu</a></li>
+        <li><a href="#speakup">Speak Up</a></li>
         <li><a href="#about">About</a></li>
       </ul>
     </nav>
@@ -372,6 +388,11 @@
       <span class="name">TabuTabu</span>
       <span class="genre">Party Game</span>
     </a>
+    <a class="app-tile" href="#speakup">
+      <span class="icon"><img src="icon-speakup.webp" alt="English Words: Speak Up app icon"></span>
+      <span class="name">English Words: Speak Up</span>
+      <span class="genre">Voice Game</span>
+    </a>
   </div>
 </section>
 
@@ -380,8 +401,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="tag">Our Games</span>
-      <h2>Four games, four kinds of fun</h2>
-      <p>Two puzzles to sink into on your own, and two party games that turn any room into game night.</p>
+      <h2>Five games, five kinds of fun</h2>
+      <p>Puzzles to sink into on your own, party games that turn any room into game night, and a voice game that gets you talking.</p>
     </div>
     <div class="g-grid reveal">
       <div class="copy">
@@ -548,6 +569,48 @@
           <div class="ph"><img src="tabu-home.webp" alt="TabuTabu home screen with two teams" loading="lazy"></div>
           <div class="ph"><img src="tabu-card.webp" alt="TabuTabu word card with forbidden words" loading="lazy"></div>
           <div class="ph"><img src="tabu-summary.webp" alt="TabuTabu round summary" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SPEAK UP ================= -->
+<section class="game-sec night" id="speakup">
+  <div class="wrap">
+    <div class="g-grid reveal">
+      <div class="copy">
+        <div class="g-head">
+          <span class="g-icon"><img src="icon-speakup.webp" alt=""></span>
+          <div>
+            <span class="sub amber">Voice Game</span>
+            <h3>English Words: Speak Up</h3>
+          </div>
+        </div>
+        <p class="lead">Say the English word out loud and watch your rocket blast further into space. Real voice recognition turns every round into a fast, breathless dash for a new high score.</p>
+        <ul class="feats">
+          <li><span class="ico amber">🎤</span> Speak the word — real voice recognition</li>
+          <li><span class="ico amber">🚀</span> Right answers rocket you higher</li>
+          <li><span class="ico amber">❤️</span> Limited lives — every miss costs you</li>
+          <li><span class="ico amber">⭐</span> Chase your best distance &amp; score</li>
+        </ul>
+        <div class="badges">
+          <a class="store" href="#" onclick="return false;" aria-disabled="true">
+            <span class="glyph"></span>
+            <span><small>Download on the</small><strong>App Store</strong></span>
+          </a>
+          <a class="store" href="#" onclick="return false;" aria-disabled="true">
+            <span class="glyph">▶</span>
+            <span><small>Get it on</small><strong>Google Play</strong></span>
+          </a>
+          <span class="soon">Coming soon</span>
+        </div>
+      </div>
+      <div class="media">
+        <div class="shots-p">
+          <div class="ph"><img src="speakup-play.webp" alt="English Words: Speak Up — say the word" loading="lazy"></div>
+          <div class="ph"><img src="speakup-correct.webp" alt="English Words: Speak Up — correct answer" loading="lazy"></div>
+          <div class="ph"><img src="speakup-result.webp" alt="English Words: Speak Up — new high score" loading="lazy"></div>
         </div>
       </div>
     </div>
