@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use — Photo Finder: Reverse Image</title>
+<meta name="description" content="Terms of Use for the Photo Finder: Reverse Image app by Puhu Studios.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ffffff">
+<script>
+  (function(){
+    try{
+      var t = localStorage.getItem('puhu-theme');
+      if(t === 'dark' || t === 'light'){ document.documentElement.setAttribute('data-theme', t); }
+    }catch(e){}
+  })();
+</script>
+<style>
+  :root{
+    --page:#ffffff; --surface:#ffffff; --surface-2:#f6f8fc;
+    --card:linear-gradient(180deg,#ffffff,#f7f9fd);
+    --line:rgba(16,24,40,.11); --line-soft:rgba(16,24,40,.075);
+    --fill:rgba(16,24,40,.04); --fill-2:rgba(16,24,40,.07);
+    --text:#0d1526; --text-2:#28374e; --muted:#5a6a86; --muted-dim:#8493ab;
+    --mint:#0ba36a; --azure:#0284c7;
+    --hero-1:rgba(11,163,106,.16); --hero-2:rgba(2,132,199,.14);
+    --sh-sm:0 4px 14px rgba(16,24,40,.06);
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+  }
+  [data-theme="dark"]{
+    --page:#06080f; --surface:#0b0f1a; --surface-2:#111726;
+    --card:linear-gradient(180deg,#111726,#0b0f1a);
+    --line:rgba(255,255,255,.09); --line-soft:rgba(255,255,255,.055);
+    --fill:rgba(255,255,255,.05); --fill-2:rgba(255,255,255,.09);
+    --text:#eef2fb; --text-2:#cfd8e8; --muted:#93a0ba; --muted-dim:#6b7994;
+    --mint:#2fe3a0; --azure:#45c4ff;
+    --hero-1:rgba(47,227,160,.16); --hero-2:rgba(69,196,255,.14);
+    --sh-sm:0 6px 18px rgba(0,0,0,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--body);background:var(--page);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+  a{color:var(--mint);font-weight:500;text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+  .top{position:relative;overflow:hidden;padding:4.2rem 1.6rem 3.4rem;text-align:center;border-bottom:1px solid var(--line-soft)}
+  .top::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(620px 340px at 20% 0%, var(--hero-1), transparent 64%),
+      radial-gradient(560px 320px at 85% 20%, var(--hero-2), transparent 64%);
+  }
+  .top .in{position:relative;max-width:760px;margin:0 auto}
+  .brand{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:700;font-size:1rem;color:var(--text);margin-bottom:1.8rem}
+  .brand .mk{
+    width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:1rem;
+    background:linear-gradient(150deg,var(--hero-1),var(--hero-2));border:1px solid var(--line);
+  }
+  .top h1{font-size:clamp(1.9rem,4.4vw,2.7rem)}
+  .top .app{margin-top:.7rem;font-weight:600;color:var(--muted);font-size:1rem}
+  .top .date{display:inline-block;margin-top:1rem;font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-dim)}
+  .theme-btn{
+    position:fixed;top:1.1rem;right:1.2rem;z-index:20;
+    width:38px;height:38px;border-radius:50%;cursor:pointer;display:grid;place-items:center;
+    background:var(--fill);border:1px solid var(--line);color:var(--text);
+    backdrop-filter:blur(10px);transition:background .18s ease,transform .18s ease;
+  }
+  .theme-btn:hover{background:var(--fill-2);transform:translateY(-1px)}
+  .theme-btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .theme-btn .sun{display:none}
+  [data-theme="dark"] .theme-btn .moon{display:none}
+  [data-theme="dark"] .theme-btn .sun{display:block}
+  main{max-width:760px;margin:0 auto;padding:3.4rem 1.6rem 4.5rem}
+  main h2{font-size:1.25rem;margin:2.6rem 0 .9rem;letter-spacing:-.02em}
+  main p{color:var(--muted);margin-bottom:1rem;font-size:.98rem}
+  main ul{margin:0 0 1.2rem 1.2rem;color:var(--muted);font-size:.98rem}
+  main li{margin-bottom:.6rem}
+  main strong{color:var(--text-2);font-weight:600}
+  main em{color:var(--text-2)}
+  .note{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.4rem 1.6rem;color:var(--text-2);font-size:.98rem;box-shadow:var(--sh-sm)}
+  /* Section 3 carries the real legal weight of this document — given its own
+     emphasis so it cannot be skimmed past. */
+  .callout{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--mint);border-radius:14px;padding:1.1rem 1.3rem;margin-bottom:1.2rem;color:var(--text-2);font-size:.96rem}
+  footer{border-top:1px solid var(--line-soft);padding:2.4rem 1.6rem;text-align:center}
+  footer .cp{font-size:.82rem;color:var(--muted-dim)}
+  footer .lk{margin-top:.8rem;display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap}
+  footer .lk a{font-size:.86rem;color:var(--muted);font-weight:400}
+  footer .lk a:hover{color:var(--text);text-decoration:none}
+</style>
+</head>
+<body>
+
+<button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+  <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.4 12h2.2M19.4 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+</button>
+
+<div class="top">
+  <div class="in">
+    <span class="brand"><span class="mk">🦉</span> Puhu Studios</span>
+    <h1>Terms of Use</h1>
+    <div class="app">Photo Finder: Reverse Image</div>
+    <div class="date">Effective date: September 23, 2026</div>
+  </div>
+</div>
+
+<main>
+  <p class="note">These Terms of Use ("Terms") are a legal agreement between you and Puhu Studios ("we", "us", "our") governing your use of the <strong>Photo Finder: Reverse Image</strong> mobile app (the "App"). By downloading or using the App, you agree to these Terms.</p>
+
+  <h2>1. What the App Does</h2>
+  <p>The App lets you choose a photo from your device and searches the web to find pages where that photo, or a visually similar one, appears. If you optionally provide details such as a name, city, employer or username, the App may also search a small number of platforms using that text information. <strong>The App does not perform facial recognition.</strong> It compares images and matches text — it does not identify faces or verify identity.</p>
+
+  <h2>2. Eligibility</h2>
+  <p>You must be at least 17 years old (or the minimum age required in your country, if higher) to use the App. By using the App, you represent that you meet this requirement.</p>
+
+  <h2>3. Your Responsibility — Whose Photos You May Search</h2>
+  <div class="callout">The App is intended for you to find where <strong>your own</strong> photos appear online, or photos you have explicit permission to search. Before each search, the App asks you to confirm this.</div>
+  <p>You agree that you will not use the App to:</p>
+  <ul>
+    <li>search a photo of another person without their knowledge and explicit permission;</li>
+    <li>stalk, harass, intimidate, dox, or locate a person against their wishes;</li>
+    <li>make employment, tenancy, credit, insurance, or any other legally regulated eligibility decision about a person (the App is not a background-check, tenant-screening, or consumer-reporting service and must not be used as one);</li>
+    <li>violate any applicable law, or any other person's privacy or other rights.</li>
+  </ul>
+  <p>We may suspend or terminate your access if we believe you have violated this section.</p>
+
+  <h2>4. No Guarantee of Results</h2>
+  <p>Search results depend on third-party search indexes that we do not control. Results may be incomplete, outdated, delayed, or occasionally inaccurate. A page appearing or not appearing in your results is not proof that a photo has, or has not, been used elsewhere. Search results link to third-party pages that we do not operate and are not responsible for.</p>
+
+  <h2>5. Subscriptions &amp; In-App Purchases</h2>
+  <ul>
+    <li>The App offers auto-renewing weekly and monthly subscriptions, each granting a set number of searches for that period (currently 14 per week or 30 per month). Unused searches do not carry over between periods.</li>
+    <li>Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period. You can manage or cancel your subscription in your Apple ID account settings.</li>
+    <li>Purchases are processed by Apple through your App Store account. Payment and refund matters are handled by Apple under its terms; refund requests should be directed to Apple.</li>
+    <li>We may adjust plan pricing, allotments, or availability going forward; changes do not apply retroactively to a period you have already paid for.</li>
+  </ul>
+
+  <h2>6. Acceptable Use</h2>
+  <p>In addition to Section 3, you agree not to:</p>
+  <ul>
+    <li>copy, modify, reverse engineer, decompile, or create derivative works of the App;</li>
+    <li>use automated tools, bots, or scripts to access the App or its backend services;</li>
+    <li>interfere with or disrupt the App or the services it depends on;</li>
+    <li>attempt to circumvent the App's search limits or authentication.</li>
+  </ul>
+
+  <h2>7. Intellectual Property</h2>
+  <p>The App, including its design, code, and branding, is owned by or licensed to Puhu Studios and is protected by intellectual property laws. All rights not expressly granted are reserved. Photos you search remain yours — we claim no ownership over them.</p>
+
+  <h2>8. Updates &amp; Availability</h2>
+  <p>We may update, modify, suspend, or discontinue the App, or any part of the search functionality, at any time. We do not guarantee that the App will always be available, uninterrupted, or error-free.</p>
+
+  <h2>9. Termination</h2>
+  <p>We may suspend or terminate your access if you breach these Terms, in particular Section 3 or 6. You may stop using the App at any time by deleting it. No refunds are owed for unused subscription time except where required by law.</p>
+
+  <h2>10. Disclaimer of Warranties</h2>
+  <p>The App is provided "as is" and "as available," without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, and non-infringement, to the maximum extent permitted by law.</p>
+
+  <h2>11. Limitation of Liability</h2>
+  <p>To the maximum extent permitted by law, Puhu Studios shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or loss of data, profits, or goodwill, arising from your use of the App — including decisions made or actions taken based on search results. Our total liability for any claim shall not exceed the amount you paid us in the six (6) months before the claim arose (or USD 50 if you paid nothing). Some jurisdictions do not allow certain limitations, so parts of this section may not apply to you.</p>
+
+  <h2>12. Apple-Specific Terms</h2>
+  <p>If you downloaded the App from the Apple App Store, the following additional terms apply:</p>
+  <ul>
+    <li>These Terms are between you and Puhu Studios only — not with Apple Inc. ("Apple"). Apple is not responsible for the App or its content.</li>
+    <li>Your license is limited to use on Apple-branded devices that you own or control, as permitted by the App Store Terms of Service, except that the App may be accessed by other accounts via Family Sharing.</li>
+    <li>Apple has no obligation to provide maintenance or support for the App.</li>
+    <li>If the App fails to conform to an applicable warranty, you may notify Apple and Apple will refund the purchase price (if any); to the maximum extent permitted by law, Apple has no other warranty obligation, and any other claims are our responsibility.</li>
+    <li>Apple is not responsible for addressing any claims by you or a third party relating to the App, including product liability claims, legal or regulatory compliance claims, and consumer protection claims.</li>
+    <li>In the event of a third-party claim that the App infringes intellectual property rights, we — not Apple — are responsible for the investigation, defense, settlement, and discharge of such claim.</li>
+    <li>You represent that you are not located in a country subject to a U.S. Government embargo or designated as a "terrorist supporting" country, and that you are not on any U.S. Government list of prohibited or restricted parties.</li>
+    <li>Apple and its subsidiaries are third-party beneficiaries of these Terms and may enforce them against you.</li>
+  </ul>
+
+  <h2>13. Governing Law</h2>
+  <p>These Terms are governed by the laws of the Republic of Türkiye, without regard to conflict-of-law principles. Nothing in these Terms deprives you of mandatory consumer protections in your country of residence.</p>
+
+  <h2>14. Changes to These Terms</h2>
+  <p>We may revise these Terms from time to time. The updated version will be posted on this page with a new effective date. Continued use of the App after changes take effect constitutes acceptance of the revised Terms.</p>
+
+  <h2>15. Contact Us</h2>
+  <p>Questions about these Terms? Email us at <a href="mailto:puhustudios@gmail.com">puhustudios@gmail.com</a>.</p>
+</main>
+
+<footer>
+  <div class="cp">© <span id="year">2026</span> Puhu Studios</div>
+  <div class="lk">
+    <a href="photofinder-privacy.html">Privacy Policy</a>
+    <a href="mailto:puhustudios@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const root = document.documentElement;
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const syncMeta = () => { if (meta) meta.setAttribute('content', root.getAttribute('data-theme') === 'dark' ? '#06080f' : '#ffffff'); };
+  syncMeta();
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    syncMeta();
+    try { localStorage.setItem('puhu-theme', next); } catch(e) {}
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

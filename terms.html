@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +7,100 @@
 <meta name="description" content="Terms of Use for Puhu Studios games, including Solimage.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦉</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="icon-solimage.webp" type="image/webp">
+<script>
+  (function(){
+    try{
+      var t = localStorage.getItem('puhu-theme');
+      if(t === 'dark' || t === 'light'){ document.documentElement.setAttribute('data-theme', t); }
+    }catch(e){}
+  })();
+</script>
 <style>
   :root{
-    --navy:#0b1220; --navy-2:#0d1626;
-    --cream:#f6f8fb; --ink:#16202e; --ink-soft:#43536a;
+    --page:#ffffff; --surface:#ffffff; --surface-2:#f6f8fc;
+    --card:linear-gradient(180deg,#ffffff,#f7f9fd);
+    --line:rgba(16,24,40,.11); --line-soft:rgba(16,24,40,.075);
+    --fill:rgba(16,24,40,.04); --fill-2:rgba(16,24,40,.07);
+    --text:#0d1526; --text-2:#28374e; --muted:#5a6a86; --muted-dim:#8493ab;
+    --mint:#0ba36a; --azure:#0284c7;
+    --hero-1:rgba(11,163,106,.16); --hero-2:rgba(2,132,199,.14);
+    --sh-sm:0 4px 14px rgba(16,24,40,.06);
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+  }
+  [data-theme="dark"]{
+    --page:#06080f; --surface:#0b0f1a; --surface-2:#111726;
+    --card:linear-gradient(180deg,#111726,#0b0f1a);
+    --line:rgba(255,255,255,.09); --line-soft:rgba(255,255,255,.055);
+    --fill:rgba(255,255,255,.05); --fill-2:rgba(255,255,255,.09);
+    --text:#eef2fb; --text-2:#cfd8e8; --muted:#93a0ba; --muted-dim:#6b7994;
+    --mint:#2fe3a0; --azure:#45c4ff;
+    --hero-1:rgba(47,227,160,.16); --hero-2:rgba(69,196,255,.14);
+    --sh-sm:0 6px 18px rgba(0,0,0,.35);
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Nunito',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.7}
-  a{color:#22a854;font-weight:800}
-  .top{
-    background:linear-gradient(160deg,var(--navy),var(--navy-2));
-    background-image:radial-gradient(500px 260px at 30% 0%, rgba(74,222,128,.18), transparent 70%),linear-gradient(160deg,var(--navy),var(--navy-2));
-    color:#fff;padding:3.4rem 1.4rem 3rem;text-align:center;
+  body{font-family:var(--body);background:var(--page);color:var(--text);line-height:1.75;-webkit-font-smoothing:antialiased;transition:background .35s ease,color .35s ease}
+  a{color:var(--mint);font-weight:500;text-decoration:none}
+  a:hover{text-decoration:underline}
+  h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+  .top{position:relative;overflow:hidden;padding:4.2rem 1.6rem 3.4rem;text-align:center;border-bottom:1px solid var(--line-soft)}
+  .top::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(620px 340px at 20% 0%, var(--hero-1), transparent 64%),
+      radial-gradient(560px 320px at 85% 20%, var(--hero-2), transparent 64%);
   }
-  .top a.home{display:inline-flex;align-items:center;gap:.5rem;color:#fff;font-weight:900;margin-bottom:1.6rem;text-decoration:none}
-  .top h1{font-weight:900;font-size:clamp(1.9rem,4vw,2.6rem)}
-  .top p{font-weight:700;color:rgba(255,255,255,.85);margin-top:.5rem}
-  main{max-width:760px;margin:0 auto;padding:3rem 1.4rem 4rem}
-  main h2{font-weight:900;font-size:1.35rem;margin:2.2rem 0 .7rem}
-  main p{font-weight:600;color:var(--ink-soft);margin-bottom:1rem}
-  main ul{margin:0 0 1rem 1.3rem;font-weight:600;color:var(--ink-soft)}
-  main li{margin-bottom:.45rem}
-  .note{background:#fff;border-radius:18px;padding:1.2rem 1.4rem;box-shadow:0 8px 24px rgba(20,50,30,.1);font-weight:700}
-  footer{background:#0b1220;color:rgba(255,255,255,.72);text-align:center;padding:1.6rem 1.4rem;font-weight:700;font-size:.9rem}
-  footer a{color:#fff;text-decoration:none;margin:0 .5rem}
+  .top .in{position:relative;max-width:760px;margin:0 auto}
+  .home{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--display);font-weight:700;font-size:1rem;color:var(--text);margin-bottom:1.8rem;text-decoration:none}
+  .home:hover{text-decoration:none;opacity:.85}
+  .home .mk{
+    width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:1rem;
+    background:linear-gradient(150deg,var(--hero-1),var(--hero-2));border:1px solid var(--line);
+  }
+  .top h1{font-size:clamp(1.9rem,4.4vw,2.7rem)}
+  .top .date{display:inline-block;margin-top:1rem;font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-dim)}
+  .theme-btn{
+    position:fixed;top:1.1rem;right:1.2rem;z-index:20;
+    width:38px;height:38px;border-radius:50%;cursor:pointer;display:grid;place-items:center;
+    background:var(--fill);border:1px solid var(--line);color:var(--text);
+    backdrop-filter:blur(10px);transition:background .18s ease,transform .18s ease;
+  }
+  .theme-btn:hover{background:var(--fill-2);transform:translateY(-1px)}
+  .theme-btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .theme-btn .sun{display:none}
+  [data-theme="dark"] .theme-btn .moon{display:none}
+  [data-theme="dark"] .theme-btn .sun{display:block}
+  main{max-width:760px;margin:0 auto;padding:3.4rem 1.6rem 4.5rem}
+  main h2{font-size:1.25rem;margin:2.6rem 0 .9rem;letter-spacing:-.02em}
+  main p{color:var(--muted);margin-bottom:1rem;font-size:.98rem}
+  main ul{margin:0 0 1.2rem 1.2rem;color:var(--muted);font-size:.98rem}
+  main li{margin-bottom:.6rem}
+  main strong{color:var(--text-2);font-weight:600}
+  main em{color:var(--text-2)}
+  .note{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.4rem 1.6rem;color:var(--text-2);font-size:.98rem;box-shadow:var(--sh-sm)}
+  footer{border-top:1px solid var(--line-soft);padding:2.4rem 1.6rem;text-align:center}
+  footer .cp{font-size:.82rem;color:var(--muted-dim)}
+  footer .lk{margin-top:.8rem;display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap}
+  footer .lk a{font-size:.86rem;color:var(--muted);font-weight:400}
+  footer .lk a:hover{color:var(--text);text-decoration:none}
 </style>
 </head>
 <body>
 
+<button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+  <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.4 12h2.2M19.4 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+</button>
+
 <div class="top">
-  <a class="home" href="index.html">🦉 Puhu Studios</a>
-  <h1>Terms of Use</h1>
-  <p>Effective date: August 9, 2026</p>
+  <div class="in">
+    <a class="home" href="index.html"><span class="mk">🦉</span> Puhu Studios</a>
+    <h1>Terms of Use</h1>
+    <div class="date">Effective date: August 9, 2026</div>
+  </div>
 </div>
 
 <main>
@@ -112,10 +172,27 @@
 </main>
 
 <footer>
-  🦉 © 2026 Puhu Studios ·
-  <a href="terms.html">Terms of Use</a> ·
-  <a href="privacy.html">Privacy Policy</a>
+  <div class="cp">© 2026 Puhu Studios</div>
+  <div class="lk">
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="mailto:puhustudios@gmail.com">Contact</a>
+  </div>
 </footer>
 
+
+<script>
+  const root = document.documentElement;
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const syncMeta = () => { if (meta) meta.setAttribute('content', root.getAttribute('data-theme') === 'dark' ? '#06080f' : '#ffffff'); };
+  syncMeta();
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    syncMeta();
+    try { localStorage.setItem('puhu-theme', next); } catch(e) {}
+  });
+</script>
 </body>
 </html>

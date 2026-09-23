@@ -1,339 +1,434 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Puhu Studios — Playful Mobile Games</title>
 <meta name="description" content="Puhu Studios crafts playful mobile games — Solimage, Word Association: Groups, Guess Words: UpDown, Forbidden Words Game: TabuTabu and English Words: Speak Up.">
 <meta property="og:title" content="Puhu Studios — Playful Mobile Games">
-<meta property="og:description" content="Solimage, Word Association: Groups, Guess Words: UpDown, Forbidden Words Game: TabuTabu and English Words: Speak Up — playful mobile games by Puhu Studios.">
+<meta property="og:description" content="Five playful mobile games by Puhu Studios — puzzles for quiet moments, party games for loud ones.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://games.puhustudios.com">
 <meta property="og:image" content="https://games.puhustudios.com/icon-solimage.webp">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="icon-solimage.webp" type="image/webp">
+<script>
+  /* set theme before paint to avoid a flash */
+  (function(){
+    try{
+      var t = localStorage.getItem('puhu-theme');
+      if(t === 'dark' || t === 'light'){ document.documentElement.setAttribute('data-theme', t); }
+    }catch(e){}
+  })();
+</script>
 <style>
+  /* ============================================================
+     THEME TOKENS — light is the default, dark is opt-in
+     ============================================================ */
   :root{
-    --bg:#f7f9fc;
-    --bg-alt:#eef2f7;
-    --card:#ffffff;
-    --ink:#101c30;
-    --muted:#5b6b85;
-    --line:#e7ecf4;
-    --green:#22b558;
-    --green-dark:#15803d;
-    --gold:#f5a900;
-    --blue:#3b82f6;
-    --blue-dark:#1d4ed8;
-    --purple:#8b5cf6;
-    --r-lg:24px;
-    --r-md:16px;
-    --shadow-sm:0 6px 18px rgba(16,28,48,.07);
-    --shadow-md:0 16px 40px rgba(16,28,48,.10);
-    --shadow-lg:0 28px 70px rgba(16,28,48,.16);
+    --page:#ffffff;
+    --surface:#ffffff;
+    --surface-2:#f6f8fc;
+    --card:linear-gradient(180deg,#ffffff,#f7f9fd);
+    --line:rgba(16,24,40,.11);
+    --line-soft:rgba(16,24,40,.075);
+    --fill:rgba(16,24,40,.04);
+    --fill-2:rgba(16,24,40,.07);
+
+    --text:#0d1526;
+    --text-2:#28374e;
+    --muted:#5a6a86;
+    --muted-dim:#8493ab;
+
+    --mint:#0ba36a;
+    --azure:#0284c7;
+    --coral:#e2620d;
+    --violet:#7c3aed;
+    --gold:#a97406;
+
+    --glow-mint:rgba(11,163,106,.13);
+    --glow-azure:rgba(2,132,199,.12);
+    --glow-coral:rgba(226,98,13,.12);
+    --glow-violet:rgba(124,58,237,.12);
+    --glow-gold:rgba(169,116,6,.13);
+
+    --hero-1:rgba(11,163,106,.16);
+    --hero-2:rgba(2,132,199,.14);
+    --hero-3:rgba(124,58,237,.13);
+    --grid-line:rgba(16,24,40,.055);
+
+    --header-bg:rgba(255,255,255,.82);
+    --sh-sm:0 4px 14px rgba(16,24,40,.06);
+    --sh-md:0 12px 30px rgba(16,24,40,.09);
+    --sh-lg:0 26px 55px rgba(16,24,40,.13);
+
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --r-lg:26px;
+    --maxw:1200px;
   }
+
+  [data-theme="dark"]{
+    --page:#06080f;
+    --surface:#0b0f1a;
+    --surface-2:#111726;
+    --card:linear-gradient(180deg,#111726,#0b0f1a);
+    --line:rgba(255,255,255,.09);
+    --line-soft:rgba(255,255,255,.055);
+    --fill:rgba(255,255,255,.05);
+    --fill-2:rgba(255,255,255,.09);
+
+    --text:#eef2fb;
+    --text-2:#cfd8e8;
+    --muted:#93a0ba;
+    --muted-dim:#6b7994;
+
+    --mint:#2fe3a0;
+    --azure:#45c4ff;
+    --coral:#ff8a4c;
+    --violet:#a78bfa;
+    --gold:#ffc94d;
+
+    --glow-mint:rgba(47,227,160,.14);
+    --glow-azure:rgba(69,196,255,.14);
+    --glow-coral:rgba(255,138,76,.14);
+    --glow-violet:rgba(167,139,250,.14);
+    --glow-gold:rgba(255,201,77,.14);
+
+    --hero-1:rgba(47,227,160,.16);
+    --hero-2:rgba(69,196,255,.14);
+    --hero-3:rgba(167,139,250,.13);
+    --grid-line:rgba(255,255,255,.028);
+
+    --header-bg:rgba(6,8,15,.82);
+    --sh-sm:0 6px 18px rgba(0,0,0,.35);
+    --sh-md:0 16px 38px rgba(0,0,0,.45);
+    --sh-lg:0 26px 60px rgba(0,0,0,.55);
+  }
+
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   body{
-    font-family:'Nunito',system-ui,sans-serif;
-    background:var(--bg);color:var(--ink);
-    line-height:1.6;overflow-x:hidden;
+    font-family:var(--body);
+    background:var(--page);color:var(--text);
+    line-height:1.7;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    transition:background .35s ease, color .35s ease;
   }
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
-  h1,h2,h3{font-weight:900;letter-spacing:-.6px;line-height:1.1}
-  ::selection{background:rgba(34,181,88,.22)}
+  h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.08;letter-spacing:-.03em}
+  ::selection{background:var(--glow-mint)}
 
-  /* ---------- buttons & chips ---------- */
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 1.6rem}
+
+  /* ============ shared bits ============ */
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.7rem;
+    font-family:var(--body);font-size:.72rem;font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+    margin-bottom:1.1rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;border-radius:2px;background:currentColor;opacity:.55}
+  .eyebrow.mint{color:var(--mint)}
+  .eyebrow.azure{color:var(--azure)}
+  .eyebrow.coral{color:var(--coral)}
+  .eyebrow.violet{color:var(--violet)}
+  .eyebrow.gold{color:var(--gold)}
+
   .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-    font-weight:800;font-size:1rem;padding:.95rem 2rem;border-radius:999px;
-    transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;border:none;
-    white-space:nowrap;
+    display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+    font-family:var(--body);font-weight:600;font-size:.95rem;
+    padding:.9rem 1.75rem;border-radius:999px;border:none;cursor:pointer;
+    white-space:nowrap;transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
   }
-  .btn:hover{transform:translateY(-2px)}
-  .btn:active{transform:translateY(1px)}
   .btn-primary{
-    background:linear-gradient(135deg,#2fd06b,var(--green));color:#fff;
-    box-shadow:var(--shadow-sm);
+    background:linear-gradient(135deg,#22d68f,#0f9f68);
+    color:#03150d;box-shadow:0 10px 26px rgba(15,159,104,.28);
   }
-  .btn-outline{
-    background:#fff;color:var(--ink);
-    box-shadow:inset 0 0 0 2px var(--line);
-  }
-  .btn-outline:hover{box-shadow:inset 0 0 0 2px #d7dfeb}
-  .chip{
-    display:inline-flex;align-items:center;gap:.55rem;
-    font-weight:800;font-size:.88rem;color:var(--muted);
-    background:#fff;border:1.5px solid var(--line);
-    padding:.5rem 1.15rem;border-radius:999px;
-  }
-  .chip .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
-  .tag{
-    display:inline-block;font-weight:900;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;
-    color:var(--green-dark);margin-bottom:.9rem;
-  }
+  [data-theme="dark"] .btn-primary{background:linear-gradient(135deg,#3ff0ad,#12b981)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(15,159,104,.34)}
+  .btn-ghost{background:var(--fill);color:var(--text);border:1px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-2px);background:var(--fill-2)}
+  .btn-sm{padding:.62rem 1.25rem;font-size:.86rem}
 
-  /* ---------- nav ---------- */
+  .pill{
+    display:inline-flex;align-items:center;gap:.55rem;
+    font-size:.78rem;font-weight:600;color:var(--muted);
+    background:var(--fill);border:1px solid var(--line);
+    padding:.42rem 1rem;border-radius:999px;
+  }
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px var(--glow-mint)}
+
+  /* ============ header ============ */
   header{
     position:fixed;top:0;left:0;right:0;z-index:100;
-    background:var(--bg);
-    transition:background .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
+    transition:background .3s ease, border-color .3s ease;
+    border-bottom:1px solid transparent;
   }
   header.scrolled{
-    background:rgba(255,255,255,.78);backdrop-filter:blur(14px);
-    box-shadow:0 1px 0 var(--line);
+    background:var(--header-bg);backdrop-filter:blur(16px) saturate(140%);
+    border-bottom-color:var(--line-soft);
   }
   .nav{
-    max-width:1180px;margin:0 auto;padding:1rem 1.5rem;
+    max-width:var(--maxw);margin:0 auto;padding:1.05rem 1.6rem;
     display:flex;align-items:center;justify-content:space-between;gap:1rem;
   }
-  .logo{display:flex;align-items:center;gap:.65rem;font-weight:900;font-size:1.2rem}
+  .logo{display:flex;align-items:center;gap:.7rem;font-family:var(--display);font-weight:700;font-size:1.06rem;letter-spacing:-.02em}
   .logo-mark{
-    width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:1.3rem;
-    background:linear-gradient(135deg,#e9fbf0,#d7f5e2);
-    box-shadow:inset 0 0 0 1.5px rgba(34,181,88,.25);
+    width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:1.15rem;
+    background:linear-gradient(150deg,var(--glow-mint),var(--glow-azure));
+    border:1px solid var(--line);
   }
-  nav ul{display:flex;gap:.25rem;list-style:none}
-  nav ul a{
-    font-weight:800;font-size:.95rem;color:var(--muted);
-    padding:.5rem 1rem;border-radius:999px;transition:color .15s, background .15s;
+  nav.links ul{display:flex;align-items:center;gap:.15rem;list-style:none}
+  nav.links a{
+    display:block;font-size:.9rem;font-weight:500;color:var(--muted);
+    padding:.5rem .95rem;border-radius:999px;transition:color .18s, background .18s;
   }
-  nav ul a:hover{color:var(--ink);background:rgba(16,28,48,.05)}
-  .nav .btn{padding:.6rem 1.4rem;font-size:.9rem}
+  nav.links a:hover{color:var(--text);background:var(--fill)}
+  .nav-right{display:flex;align-items:center;gap:.6rem}
 
-  /* ---------- hero ---------- */
-  .hero{position:relative;padding:9.5rem 1.5rem 4.5rem;text-align:center;overflow:hidden}
+  /* theme toggle */
+  .theme-btn{
+    width:38px;height:38px;flex:none;border-radius:50%;cursor:pointer;
+    display:grid;place-items:center;
+    background:var(--fill);border:1px solid var(--line);color:var(--text);
+    transition:background .18s ease, transform .18s ease, border-color .18s ease;
+  }
+  .theme-btn:hover{background:var(--fill-2);transform:translateY(-1px)}
+  .theme-btn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .theme-btn .moon{display:block}
+  .theme-btn .sun{display:none}
+  [data-theme="dark"] .theme-btn .moon{display:none}
+  [data-theme="dark"] .theme-btn .sun{display:block}
+
+  /* ============ hero ============ */
+  .hero{position:relative;padding:11rem 0 5.5rem;overflow:hidden;border-bottom:1px solid var(--line-soft)}
   .hero::before{
     content:"";position:absolute;inset:0;pointer-events:none;
     background:
-      radial-gradient(640px 440px at 12% 0%, rgba(34,181,88,.12), transparent 65%),
-      radial-gradient(560px 420px at 90% 10%, rgba(59,130,246,.11), transparent 65%),
-      radial-gradient(600px 460px at 50% 105%, rgba(245,169,0,.09), transparent 65%);
+      radial-gradient(760px 480px at 8% -5%, var(--hero-1), transparent 62%),
+      radial-gradient(700px 460px at 96% 8%, var(--hero-2), transparent 62%),
+      radial-gradient(620px 420px at 55% 110%, var(--hero-3), transparent 62%);
   }
-  .hero-inner{position:relative;max-width:880px;margin:0 auto}
-  .hero h1{font-size:clamp(2.7rem,6.2vw,4.4rem);margin:1.4rem 0 1.2rem}
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 50% 40%, #000 20%, transparent 78%);
+    -webkit-mask-image:radial-gradient(circle at 50% 40%, #000 20%, transparent 78%);
+  }
+  .hero-inner{position:relative;z-index:1;max-width:820px}
+  .hero h1{font-size:clamp(2.85rem,6.6vw,5rem);margin:.4rem 0 1.4rem}
   .hero h1 .grad{
-    background:linear-gradient(92deg,var(--green) 10%,var(--blue) 55%,var(--purple) 95%);
+    background:linear-gradient(96deg,var(--mint) 5%,var(--azure) 48%,var(--violet) 92%);
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
-  .hero p{font-size:1.16rem;font-weight:700;color:var(--muted);max-width:37rem;margin:0 auto 2.2rem}
-  .hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+  .hero .sub{font-size:1.1rem;color:var(--muted);max-width:34rem;margin-bottom:2.4rem}
+  .hero-cta{display:flex;gap:.85rem;flex-wrap:wrap;align-items:center}
 
-  /* floating app icons */
-  .icon-stage{
-    position:relative;margin:4.2rem auto 0;max-width:980px;
-    display:flex;justify-content:center;align-items:flex-start;
-    gap:clamp(1rem,4vw,3.2rem);flex-wrap:wrap;
+  .stats{
+    position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:2.8rem;
+    margin-top:4.2rem;padding-top:2.4rem;border-top:1px solid var(--line-soft);
   }
-  .app-tile{
-    display:flex;flex-direction:column;align-items:center;gap:1rem;
-    flex:0 1 200px;max-width:210px;text-align:center;
-  }
-  .app-tile .icon{
-    width:100%;aspect-ratio:1;
-    border-radius:24%;overflow:hidden;
-    box-shadow:var(--shadow-lg);
-    transition:transform .3s ease;
-  }
-  .app-tile:nth-child(1) .icon{transform:rotate(-5deg);animation:bob 5.5s ease-in-out infinite}
-  .app-tile:nth-child(2) .icon{animation:bob 5.5s ease-in-out 1.8s infinite}
-  .app-tile:nth-child(3) .icon{transform:rotate(5deg);animation:bob 5.5s ease-in-out 3.6s infinite}
-  .app-tile:hover .icon{transform:rotate(0) scale(1.05);animation-play-state:paused}
-  @keyframes bob{0%,100%{translate:0 0}50%{translate:0 -12px}}
-  .app-tile .name{font-weight:900;font-size:1rem;line-height:1.25}
-  .app-tile .genre{font-weight:800;font-size:.8rem;color:var(--muted);margin-top:-.7rem;letter-spacing:.4px;text-transform:uppercase}
+  .stat .n{font-family:var(--display);font-size:1.9rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+  .stat .l{font-size:.78rem;color:var(--muted-dim);font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-top:.5rem}
 
-  /* ---------- sections ---------- */
-  section{position:relative}
-  .wrap{max-width:1180px;margin:0 auto}
-  .sec-head{text-align:center;max-width:640px;margin:0 auto 3.4rem}
-  .sec-head h2{font-size:clamp(2rem,4vw,2.9rem)}
-  .sec-head p{color:var(--muted);font-weight:700;margin-top:.9rem;font-size:1.05rem}
+  /* ============ arcade ============ */
+  .section{padding:6.5rem 0;position:relative}
+  .section-head{max-width:640px;margin-bottom:3.4rem}
+  .section-head h2{font-size:clamp(2rem,4.2vw,3rem)}
+  .section-head p{color:var(--muted);margin-top:1rem;font-size:1.04rem}
 
-  /* ---------- game sections (color-separated, full width) ---------- */
-  .game-sec{padding:5.5rem 1.5rem}
-  .game-sec.white{background:#fff}
-  .game-sec.alt{background:var(--bg-alt)}
-
-  .g-grid{
-    display:grid;grid-template-columns:1.02fr .98fr;
-    gap:3rem;align-items:center;
+  #arcade{border-bottom:1px solid var(--line-soft)}
+  .arcade-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem}
+  .gcard{
+    position:relative;display:flex;flex-direction:column;gap:.9rem;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:1.5rem 1.35rem 1.6rem;overflow:hidden;box-shadow:var(--sh-sm);
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
   }
+  .gcard::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s ease;
+    background:radial-gradient(320px 170px at 50% -10%, var(--glow), transparent 70%);
+  }
+  .gcard:hover{transform:translateY(-7px);border-color:var(--edge);box-shadow:var(--sh-lg)}
+  .gcard:hover::before{opacity:1}
+  .gcard .ic{width:74px;height:74px;border-radius:22%;overflow:hidden;position:relative;box-shadow:var(--sh-md)}
+  .gcard .nm{font-family:var(--display);font-size:1.02rem;font-weight:600;letter-spacing:-.02em;line-height:1.25;position:relative}
+  .gcard .gn{
+    font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--edge);position:relative;margin-top:-.5rem;
+  }
+  .gcard .hk{font-size:.86rem;color:var(--muted);line-height:1.6;position:relative}
+  .gcard .go{
+    font-size:.82rem;font-weight:600;color:var(--muted);position:relative;
+    display:inline-flex;align-items:center;gap:.4rem;
+    margin-top:auto;padding-top:.35rem;transition:color .2s, gap .2s;
+  }
+  .gcard:hover .go{color:var(--edge);gap:.65rem}
+
+  .gcard.c-mint{--edge:var(--mint);--glow:var(--glow-mint)}
+  .gcard.c-azure{--edge:var(--azure);--glow:var(--glow-azure)}
+  .gcard.c-coral{--edge:var(--coral);--glow:var(--glow-coral)}
+  .gcard.c-violet{--edge:var(--violet);--glow:var(--glow-violet)}
+  .gcard.c-gold{--edge:var(--gold);--glow:var(--glow-gold)}
+
+  /* ============ game detail ============ */
+  .game{padding:7rem 0;position:relative;border-bottom:1px solid var(--line-soft)}
+  .game::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(720px 420px at var(--gx,15%) 12%, var(--glow), transparent 65%);
+  }
+  .game.g-mint{--edge:var(--mint);--glow:var(--glow-mint)}
+  .game.g-azure{--edge:var(--azure);--glow:var(--glow-azure)}
+  .game.g-coral{--edge:var(--coral);--glow:var(--glow-coral)}
+  .game.g-violet{--edge:var(--violet);--glow:var(--glow-violet)}
+  .game.g-gold{--edge:var(--gold);--glow:var(--glow-gold)}
+
+  .g-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
   .g-grid > *{min-width:0}
   .g-grid.flip > .copy{order:2}
   .g-grid.flip > .media{order:1}
 
-  .g-head{display:flex;align-items:center;gap:1.15rem;margin-bottom:1.25rem}
-  .g-icon{
-    width:86px;height:86px;border-radius:24%;overflow:hidden;flex:none;
-    box-shadow:var(--shadow-md);
-  }
-  .g-head .sub{font-weight:900;font-size:.76rem;letter-spacing:1.8px;text-transform:uppercase}
-  .sub.green{color:var(--green-dark)}
-  .sub.blue{color:var(--blue-dark)}
-  .g-head h3{font-size:clamp(1.6rem,2.7vw,2.1rem);margin-top:.1rem}
-  .lead{color:#42536e;font-weight:700;margin-bottom:1.5rem;font-size:1.02rem}
+  .g-title{display:flex;align-items:center;gap:1.1rem;margin-bottom:1.5rem}
+  .g-title .ic{width:72px;height:72px;border-radius:22%;overflow:hidden;flex:none;box-shadow:var(--sh-md)}
+  .g-title h3{font-size:clamp(1.65rem,3vw,2.35rem)}
+  .g-lead{color:var(--muted);font-size:1.04rem;margin-bottom:1.9rem;max-width:33rem}
 
-  .feats{
-    list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.8rem;
-    margin-bottom:1.9rem;
+  .g-feats{list-style:none;display:flex;flex-direction:column;margin-bottom:2.2rem}
+  .g-feats li{
+    display:flex;gap:.95rem;align-items:center;
+    font-size:.93rem;font-weight:500;color:var(--text-2);
+    padding:.72rem 0;border-bottom:1px solid var(--line-soft);
   }
-  .feats li{
-    display:flex;gap:.7rem;align-items:flex-start;
-    font-weight:800;font-size:.9rem;line-height:1.45;
-    background:#fff;border:1.5px solid var(--line);
-    border-radius:var(--r-md);padding:.8rem .95rem;
+  .g-feats li:last-child{border-bottom:none}
+  .g-feats .k{
+    flex:none;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;
+    font-size:.9rem;background:var(--fill);border:1px solid var(--line);
   }
-  .feats .ico{
-    flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:.95rem;
+
+  .g-store{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+  .store{
+    display:inline-flex;align-items:center;gap:.6rem;
+    background:var(--fill);border:1px solid var(--line);color:var(--text);
+    padding:.55rem 1.15rem;border-radius:14px;
+    transition:transform .18s ease, background .18s ease;
   }
-  .ico.green{background:#dcf5e6}
-  .ico.blue{background:#dfeaff}
-  .ico.purple{background:#ece2ff}
-  .sub.purple{color:#6d28d9}
-  .ico.sky{background:#d9edff}
-  .sub.sky{color:#0369a1}
-  .ico.amber{background:#fef0cf}
-  .sub.amber{color:#946200}
-  .game-sec.tinted{background:linear-gradient(180deg,#faf7ff,#f4eefe)}
-  .game-sec.sky-bg{background:linear-gradient(180deg,#f2f9ff,#e8f3fd)}
-  .game-sec.night{background:linear-gradient(160deg,#0b1220,#131c30);color:#fff;overflow:hidden}
-  .game-sec.night::before{
+  .store:hover{transform:translateY(-2px);background:var(--fill-2)}
+  .store .glyph{font-size:1.25rem;line-height:1}
+  .store small{display:block;font-size:.58rem;font-weight:600;color:var(--muted-dim);letter-spacing:.09em;text-transform:uppercase;line-height:1.5}
+  .store strong{font-size:.9rem;font-weight:600;line-height:1.1;font-family:var(--display)}
+  .soon{
+    font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--edge);border:1px solid currentColor;opacity:.9;
+    padding:.42rem .9rem;border-radius:999px;
+  }
+
+  .phones{display:flex;gap:1.1rem;justify-content:center;align-items:flex-start}
+  .phone{
+    flex:1 1 0;min-width:0;max-width:200px;
+    border-radius:26px;overflow:hidden;
+    border:1px solid var(--line);background:var(--surface);
+    box-shadow:var(--sh-lg);
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .phone:hover{transform:translateY(-9px);border-color:var(--edge)}
+  .phone:nth-child(2){transform:translateY(24px)}
+  .phone:nth-child(2):hover{transform:translateY(15px)}
+
+  .land-tip{
+    display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;
+    color:var(--edge);background:var(--fill);
+    border:1px solid var(--line);padding:.4rem 1rem;border-radius:999px;margin-bottom:1.2rem;
+  }
+  .wide-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3.6rem;position:relative}
+  .wide-row figure{
+    border-radius:16px;overflow:hidden;background:var(--surface);
+    border:1px solid var(--line);box-shadow:var(--sh-sm);
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .wide-row figure:hover{transform:translateY(-6px);border-color:var(--edge)}
+  .wide-row figcaption{
+    font-size:.76rem;font-weight:500;color:var(--muted);text-align:center;
+    padding:.65rem .5rem;border-top:1px solid var(--line-soft);
+  }
+
+  /* ============ about ============ */
+  #about{border-bottom:1px solid var(--line-soft)}
+  .vals{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .val{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:2rem 1.7rem;box-shadow:var(--sh-sm);
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .val:hover{transform:translateY(-6px);box-shadow:var(--sh-md)}
+  .val .k{
+    width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;
+    background:var(--fill);border:1px solid var(--line);margin-bottom:1.2rem;
+  }
+  .val h3{font-family:var(--display);font-size:1.1rem;margin-bottom:.6rem;letter-spacing:-.02em}
+  .val p{color:var(--muted);font-size:.92rem}
+
+  /* ============ contact ============ */
+  #contact{padding:6.5rem 0;position:relative;overflow:hidden;text-align:center}
+  #contact::before{
     content:"";position:absolute;inset:0;pointer-events:none;
     background:
-      radial-gradient(560px 320px at 12% 8%, rgba(245,169,0,.14), transparent 60%),
-      radial-gradient(600px 360px at 88% 92%, rgba(139,92,246,.16), transparent 60%);
+      radial-gradient(620px 340px at 50% 0%, var(--hero-1), transparent 66%),
+      radial-gradient(520px 320px at 50% 110%, var(--hero-2), transparent 66%);
   }
-  .game-sec.night .lead{color:rgba(255,255,255,.76)}
-  .game-sec.night .sub.amber{color:var(--gold)}
-  .game-sec.night .feats li{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:#fff}
-  .game-sec.night .ico.amber{background:rgba(245,169,0,.22)}
-  .game-sec.night .store{background:#fff;color:#0f1b2d}
-  .game-sec.night .shots-p .ph{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
+  .contact-inner{position:relative;max-width:34rem;margin:0 auto}
+  #contact h2{font-size:clamp(2rem,4.2vw,2.9rem);margin-bottom:1rem}
+  #contact p{color:var(--muted);margin-bottom:2.2rem}
 
-  .badges{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
-  .store{
-    display:flex;align-items:center;gap:.6rem;
-    background:#0f1b2d;color:#fff;
-    padding:.58rem 1.2rem;border-radius:13px;
-    transition:transform .15s ease;
-  }
-  .store:hover{transform:translateY(-2px)}
-  .store .glyph{font-size:1.4rem}
-  .store small{display:block;font-size:.6rem;font-weight:700;opacity:.75;letter-spacing:.4px;text-transform:uppercase}
-  .store strong{font-size:.95rem;font-weight:800;line-height:1.1}
-  .soon{
-    font-size:.7rem;font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:#5c4500;
-    background:linear-gradient(#ffe38a,#ffc933);
-    padding:.38rem .85rem;border-radius:999px;
-  }
+  /* ============ footer ============ */
+  footer{padding:3rem 0 3.4rem;border-top:1px solid var(--line-soft)}
+  .f-in{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+  .f-legal{display:flex;gap:1.4rem;flex-wrap:wrap}
+  .f-legal a{font-size:.86rem;color:var(--muted);transition:color .18s}
+  .f-legal a:hover{color:var(--text)}
+  .f-copy{font-size:.82rem;color:var(--muted-dim)}
 
-  /* portrait shots */
-  .shots-p{display:flex;gap:1.15rem;justify-content:center;align-items:flex-start}
-  .shots-p .ph{
-    flex:1 1 0;min-width:0;max-width:196px;
-    border-radius:22px;overflow:hidden;
-    box-shadow:var(--shadow-md);
-    transition:transform .3s ease;
-    border:4px solid #fff;background:#fff;
-  }
-  .shots-p .ph:hover{transform:translateY(-8px)}
-  .shots-p .ph:nth-child(2){transform:translateY(20px)}
-  .shots-p .ph:nth-child(2):hover{transform:translateY(12px)}
+  /* ============ reveal ============ */
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .75s cubic-bezier(.2,.7,.3,1), transform .75s cubic-bezier(.2,.7,.3,1)}
+  .rv.in{opacity:1;transform:none}
 
-  /* landscape gallery */
-  .land-note{
-    display:inline-flex;align-items:center;gap:.5rem;font-weight:800;font-size:.83rem;
-    color:var(--blue-dark);background:#e3edff;border:1.5px solid #c9dcff;
-    padding:.38rem 1rem;border-radius:999px;margin-bottom:1.1rem;
+  /* ============ responsive ============ */
+  @media (max-width:1080px){
+    .arcade-grid{grid-template-columns:repeat(3,1fr)}
+    .g-grid{gap:3rem}
   }
-  .shots-l{
-    display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;
-    margin-top:3rem;
-  }
-  .shots-l figure{
-    border-radius:20px;overflow:hidden;background:#fff;
-    border:4px solid #fff;box-shadow:var(--shadow-sm);
-    transition:transform .3s ease;
-  }
-  .shots-l figure:hover{transform:translateY(-6px)}
-  .shots-l figcaption{
-    font-weight:800;font-size:.88rem;text-align:center;color:var(--ink);
-    padding:.7rem .5rem;background:#fff;
-  }
-
-  /* ---------- values ---------- */
-  #about{background:#fff;padding:5.5rem 1.5rem}
-  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-  .val{
-    background:var(--bg);border:1.5px solid var(--line);border-radius:var(--r-lg);
-    padding:2.1rem 1.8rem;transition:transform .2s ease;
-  }
-  .val:hover{transform:translateY(-6px)}
-  .val .big{
-    width:54px;height:54px;border-radius:16px;display:grid;place-items:center;
-    font-size:1.6rem;margin-bottom:1.1rem;
-  }
-  .val:nth-child(1) .big{background:#e2f7ea}
-  .val:nth-child(2) .big{background:#fff1d6}
-  .val:nth-child(3) .big{background:#e3edff}
-  .val h3{font-size:1.18rem;margin-bottom:.5rem}
-  .val p{color:var(--muted);font-weight:700;font-size:.95rem}
-
-  /* ---------- contact (full-width color section) ---------- */
-  #contact{
-    background:linear-gradient(135deg,#1d9e4f,#22b558 45%,#1f8f80);
-    color:#fff;text-align:center;padding:5.5rem 1.5rem;overflow:hidden;
-  }
-  #contact::before{
-    content:"";position:absolute;inset:0;pointer-events:none;opacity:.3;
-    background:
-      radial-gradient(circle at 12% 25%, rgba(255,255,255,.35) 0 8px, transparent 9px),
-      radial-gradient(circle at 88% 30%, rgba(255,255,255,.3) 0 6px, transparent 7px),
-      radial-gradient(circle at 72% 82%, rgba(255,255,255,.3) 0 7px, transparent 8px),
-      radial-gradient(circle at 28% 85%, rgba(255,255,255,.25) 0 5px, transparent 6px);
-  }
-  #contact h2{font-size:clamp(1.9rem,3.8vw,2.6rem);position:relative}
-  #contact p{font-weight:700;color:rgba(255,255,255,.92);max-width:30rem;margin:1rem auto 2rem;position:relative}
-  #contact .btn{position:relative;background:#fff;color:var(--green-dark)}
-
-  /* ---------- footer ---------- */
-  footer{padding:2.4rem 1.5rem;text-align:center;color:var(--muted);font-weight:700;font-size:.92rem;background:var(--bg)}
-  footer .f-logo{display:flex;justify-content:center;align-items:center;gap:.5rem;font-weight:900;color:var(--ink);margin-bottom:.7rem;font-size:1.05rem}
-  footer .legal{margin-top:.5rem}
-  footer .legal a{color:var(--muted);margin:0 .55rem;transition:color .15s}
-  footer .legal a:hover{color:var(--ink)}
-
-  /* ---------- reveal ---------- */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
-  .reveal.in{opacity:1;transform:none}
-
-  /* ---------- responsive ---------- */
-  @media (max-width:980px){
-    nav ul{display:none}
-    .g-grid{grid-template-columns:1fr;gap:2.2rem}
+  @media (max-width:900px){
+    nav.links{display:none}
+    .hero{padding:9rem 0 4.5rem}
+    .g-grid{grid-template-columns:1fr;gap:2.8rem}
     .g-grid.flip > .copy{order:1}
     .g-grid.flip > .media{order:2}
-    .shots-l{grid-template-columns:1fr}
-    .values{grid-template-columns:1fr;max-width:480px;margin:0 auto}
-    .feats{grid-template-columns:1fr}
-    .shots-p{gap:.9rem}
-    .shots-p .ph{max-width:190px}
+    .vals{grid-template-columns:1fr;max-width:460px}
+    .wide-row{grid-template-columns:repeat(2,1fr)}
+    .stats{gap:2rem}
   }
-  @media (max-width:520px){
-    .hero{padding-top:8rem}
-    .icon-stage{margin-top:3rem;gap:1.1rem 1rem}
-    .app-tile{flex:0 1 132px}
-    .app-tile .name{font-size:.88rem}
-    .app-tile .genre{font-size:.7rem}
-    .shots-p{gap:.7rem}
-    .shots-p .ph{max-width:170px;border-width:3px}
+  @media (max-width:640px){
+    .arcade-grid{grid-template-columns:repeat(2,1fr);gap:.85rem}
+    .gcard{padding:1.25rem 1.1rem 1.35rem;border-radius:20px}
+    .gcard .ic{width:60px;height:60px}
+    .gcard .hk{display:none}
+    .section{padding:4.5rem 0}
+    .game{padding:4.8rem 0}
+    .phones{gap:.65rem}
+    .phone{max-width:172px;border-radius:20px}
+    .stat .n{font-size:1.5rem}
+    .f-in{flex-direction:column;text-align:center}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none !important;transition:none !important}
+    html{scroll-behavior:auto}
   }
 </style>
 </head>
@@ -342,336 +437,346 @@
 <header id="topbar">
   <div class="nav">
     <a class="logo" href="#top"><span class="logo-mark">🦉</span> Puhu Studios</a>
-    <nav>
+    <nav class="links">
       <ul>
+        <li><a href="#arcade">Games</a></li>
         <li><a href="#solimage">Solimage</a></li>
-        <li><a href="#groups">Groups</a></li>
-        <li><a href="#updown">UpDown</a></li>
-        <li><a href="#tabutabu">TabuTabu</a></li>
-        <li><a href="#speakup">Speak Up</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#updown">Party</a></li>
+        <li><a href="#about">Studio</a></li>
       </ul>
     </nav>
-    <a class="btn btn-primary" href="mailto:puhustudios@gmail.com">Contact us</a>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.4 12h2.2M19.4 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+      </button>
+      <a class="btn btn-ghost btn-sm" href="mailto:puhustudios@gmail.com">Contact us</a>
+    </div>
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
+<!-- ==================== HERO ==================== -->
 <section class="hero" id="top">
-  <div class="hero-inner">
-    <span class="chip"><span class="dot"></span> Indie game studio</span>
-    <h1>Playful games,<br><span class="grad">crafted with heart</span></h1>
-    <p>We're Puhu Studios. We make mobile games that are easy to pick up and hard to put down — brain-teasing puzzles for quiet moments and party games for loud ones.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#solimage">Explore our games</a>
-      <a class="btn btn-outline" href="#about">About the studio</a>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="pill"><span class="dot"></span> Indie game studio</span>
+      <h1>Five games.<br><span class="grad">Endless ways to play.</span></h1>
+      <p class="sub">We're Puhu Studios. We build mobile games that are easy to pick up and hard to put down — brain-teasing puzzles for quiet moments, loud party games for everyone else.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#arcade">Browse the games</a>
+        <a class="btn btn-ghost" href="#about">About the studio</a>
+      </div>
     </div>
-  </div>
-  <div class="icon-stage">
-    <a class="app-tile" href="#solimage">
-      <span class="icon"><img src="icon-solimage.webp" alt="Solimage — Image Puzzle app icon"></span>
-      <span class="name">Solimage</span>
-      <span class="genre">Image Puzzle</span>
-    </a>
-    <a class="app-tile" href="#groups">
-      <span class="icon"><img src="icon-groups.webp" alt="Word Association: Groups app icon"></span>
-      <span class="name">Word Association: Groups</span>
-      <span class="genre">Word Puzzle</span>
-    </a>
-    <a class="app-tile" href="#updown">
-      <span class="icon"><img src="icon-updown.webp" alt="Guess Words: UpDown app icon"></span>
-      <span class="name">Guess Words: UpDown</span>
-      <span class="genre">Party Game</span>
-    </a>
-    <a class="app-tile" href="#tabutabu">
-      <span class="icon"><img src="icon-tabutabu.webp" alt="Forbidden Words Game: TabuTabu app icon"></span>
-      <span class="name">TabuTabu</span>
-      <span class="genre">Party Game</span>
-    </a>
-    <a class="app-tile" href="#speakup">
-      <span class="icon"><img src="icon-speakup.webp" alt="English Words: Speak Up app icon"></span>
-      <span class="name">English Words: Speak Up</span>
-      <span class="genre">Voice Game</span>
-    </a>
+    <div class="stats">
+      <div class="stat"><div class="n">5</div><div class="l">Games</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">Puzzles</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">Party games</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">Voice game</div></div>
+    </div>
   </div>
 </section>
 
-<!-- ================= SOLIMAGE ================= -->
-<section class="game-sec white" id="solimage">
+<!-- ==================== ARCADE ==================== -->
+<section class="section" id="arcade">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="tag">Our Games</span>
-      <h2>Five games, five kinds of fun</h2>
-      <p>Puzzles to sink into on your own, party games that turn any room into game night, and a voice game that gets you talking.</p>
+    <div class="section-head rv">
+      <span class="eyebrow">The line-up</span>
+      <h2>Pick your next favorite</h2>
+      <p>Five very different games, one obsession with making them feel good to play.</p>
     </div>
-    <div class="g-grid reveal">
+    <div class="arcade-grid rv">
+      <a class="gcard c-mint" href="#solimage">
+        <span class="ic"><img src="icon-solimage.webp" alt="Solimage app icon" loading="lazy"></span>
+        <span class="nm">Solimage</span>
+        <span class="gn">Image Puzzle</span>
+        <span class="hk">Solitaire-style photo puzzles of the world's landmarks.</span>
+        <span class="go">Explore →</span>
+      </a>
+      <a class="gcard c-azure" href="#groups">
+        <span class="ic"><img src="icon-groups.webp" alt="Word Association: Groups app icon" loading="lazy"></span>
+        <span class="nm">Word Association: Groups</span>
+        <span class="gn">Word Puzzle</span>
+        <span class="hk">One category, every word connected. Fill the blanks.</span>
+        <span class="go">Explore →</span>
+      </a>
+      <a class="gcard c-coral" href="#updown">
+        <span class="ic"><img src="icon-updown.webp" alt="Guess Words: UpDown app icon" loading="lazy"></span>
+        <span class="nm">Guess Words: UpDown</span>
+        <span class="gn">Party Game</span>
+        <span class="hk">Hold it up, describe the word, tilt to score.</span>
+        <span class="go">Explore →</span>
+      </a>
+      <a class="gcard c-violet" href="#tabutabu">
+        <span class="ic"><img src="icon-tabutabu.webp" alt="Forbidden Words Game: TabuTabu app icon" loading="lazy"></span>
+        <span class="nm">TabuTabu</span>
+        <span class="gn">Party Game</span>
+        <span class="hk">Describe the card — without the five forbidden words.</span>
+        <span class="go">Explore →</span>
+      </a>
+      <a class="gcard c-gold" href="#speakup">
+        <span class="ic"><img src="icon-speakup.webp" alt="English Words: Speak Up app icon" loading="lazy"></span>
+        <span class="nm">English Words: Speak Up</span>
+        <span class="gn">Voice Game</span>
+        <span class="hk">Say the word out loud and fly your rocket higher.</span>
+        <span class="go">Explore →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SOLIMAGE ==================== -->
+<section class="game g-mint" id="solimage" style="--gx:12%">
+  <div class="wrap">
+    <div class="g-grid rv">
       <div class="copy">
-        <div class="g-head">
-          <span class="g-icon"><img src="icon-solimage.webp" alt=""></span>
-          <div>
-            <span class="sub green">Image Puzzle</span>
-            <h3>Solimage</h3>
-          </div>
+        <span class="eyebrow mint">01 — Image Puzzle</span>
+        <div class="g-title">
+          <span class="ic"><img src="icon-solimage.webp" alt="" loading="lazy"></span>
+          <h3>Solimage</h3>
         </div>
-        <p class="lead">Flip, place, and complete gorgeous photo puzzles of the world's most iconic landmarks. Every solved picture unlocks the story behind it — from the Colosseum to the Sagrada Família.</p>
-        <ul class="feats">
-          <li><span class="ico green">🃏</span> Solitaire-style twist on image puzzles</li>
-          <li><span class="ico green">🌍</span> Travel country by country</li>
-          <li><span class="ico green">📚</span> Stories behind every landmark</li>
-          <li><span class="ico green">🏆</span> Build your Discover album</li>
+        <p class="g-lead">Flip, place, and complete gorgeous photo puzzles of the world's most iconic landmarks. Every solved picture unlocks the story behind it — from the Colosseum to the Sagrada Família.</p>
+        <ul class="g-feats">
+          <li><span class="k">🃏</span> A solitaire-style twist on image puzzles</li>
+          <li><span class="k">🌍</span> Travel the world country by country</li>
+          <li><span class="k">📚</span> Real stories behind every landmark</li>
+          <li><span class="k">🏆</span> Build your own Discover album</li>
         </ul>
-        <div class="badges">
-          <a class="store" href="#" onclick="return false;" aria-disabled="true">
-            <span class="glyph"></span>
-            <span><small>Download on the</small><strong>App Store</strong></span>
-          </a>
-          <a class="store" href="#" onclick="return false;" aria-disabled="true">
-            <span class="glyph">▶</span>
-            <span><small>Get it on</small><strong>Google Play</strong></span>
-          </a>
+        <div class="g-store">
+          <a class="store" href="#" onclick="return false;" aria-disabled="true"><span class="glyph"></span><span><small>Download on the</small><strong>App Store</strong></span></a>
+          <a class="store" href="#" onclick="return false;" aria-disabled="true"><span class="glyph">▶</span><span><small>Get it on</small><strong>Google Play</strong></span></a>
           <span class="soon">Coming soon</span>
         </div>
       </div>
       <div class="media">
-        <div class="shots-p">
-          <div class="ph"><img src="screen-home.webp" alt="Solimage home screen" loading="lazy"></div>
-          <div class="ph"><img src="screen-puzzle.webp" alt="Solimage puzzle — Sagrada Família" loading="lazy"></div>
-          <div class="ph"><img src="screen-discover.webp" alt="Solimage Discover album" loading="lazy"></div>
+        <div class="phones">
+          <div class="phone"><img src="screen-home.webp" alt="Solimage home screen" loading="lazy"></div>
+          <div class="phone"><img src="screen-puzzle.webp" alt="Solimage puzzle — Sagrada Família" loading="lazy"></div>
+          <div class="phone"><img src="screen-discover.webp" alt="Solimage Discover album" loading="lazy"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= GROUPS ================= -->
-<section class="game-sec sky-bg" id="groups">
+<!-- ==================== GROUPS ==================== -->
+<section class="game g-azure" id="groups" style="--gx:85%">
   <div class="wrap">
-    <div class="g-grid flip reveal">
+    <div class="g-grid flip rv">
       <div class="copy">
-        <div class="g-head">
-          <span class="g-icon"><img src="icon-groups.webp" alt=""></span>
-          <div>
-            <span class="sub sky">Word Puzzle</span>
-            <h3>Word Association: Groups</h3>
-          </div>
+        <span class="eyebrow azure">02 — Word Puzzle</span>
+        <div class="g-title">
+          <span class="ic"><img src="icon-groups.webp" alt="" loading="lazy"></span>
+          <h3>Word Association: Groups</h3>
         </div>
-        <p class="lead">Every board hides a category — Winter, School, Summer — and every word on it belongs to that category. Tap letters to fill the blanks, follow the clues, and complete the whole group before your lives run out.</p>
-        <ul class="feats">
-          <li><span class="ico sky">🔗</span> One category, every word connected</li>
-          <li><span class="ico sky">🎨</span> Matching colors reveal repeated letters</li>
-          <li><span class="ico sky">❤️</span> Three lives — think before you tap</li>
-          <li><span class="ico sky">🛠️</span> Boosters when a word just won't come</li>
+        <p class="g-lead">Every board hides a category — Winter, School, Summer — and every word on it belongs to that category. Tap letters to fill the blanks, follow the clues, and complete the whole group before your lives run out.</p>
+        <ul class="g-feats">
+          <li><span class="k">🔗</span> One category, every word connected</li>
+          <li><span class="k">🎨</span> Matching colors reveal repeated letters</li>
+          <li><span class="k">❤️</span> Three lives — think before you tap</li>
+          <li><span class="k">🛠️</span> Boosters for when a word just won't come</li>
         </ul>
-        <div class="badges">
-          <a class="store" href="#" onclick="return false;" aria-disabled="true">
-            <span class="glyph"></span>
-            <span><small>Download on the</small><strong>App Store</strong></span>
-          </a>
-          <a class="store" href="#" onclick="return false;" aria-disabled="true">
-            <span class="glyph">▶</span>
-            <span><small>Get it on</small><strong>Google Play</strong></span>
-          </a>
+        <div class="g-store">
+          <a class="store" href="#" onclick="return false;" aria-disabled="true"><span class="glyph"></span><span><small>Download on the</small><strong>App Store</strong></span></a>
+          <a class="store" href="#" onclick="return false;" aria-disabled="true"><span class="glyph">▶</span><span><small>Get it on</small><strong>Google Play</strong></span></a>
           <span class="soon">Coming soon</span>
         </div>
       </div>
       <div class="media">
-        <div class="shots-p">
-          <div class="ph"><img src="wa-home.webp" alt="Word Association: Groups home screen" loading="lazy"></div>
-          <div class="ph"><img src="wa-winter.webp" alt="Winter category board in progress" loading="lazy"></div>
-          <div class="ph"><img src="wa-solved.webp" alt="School category board nearly solved" loading="lazy"></div>
+        <div class="phones">
+          <div class="phone"><img src="wa-home.webp" alt="Word Association: Groups home screen" loading="lazy"></div>
+          <div class="phone"><img src="wa-winter.webp" alt="Winter category board in progress" loading="lazy"></div>
+          <div class="phone"><img src="wa-solved.webp" alt="School category board nearly solved" loading="lazy"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= UPDOWN ================= -->
-<section class="game-sec alt" id="updown">
+<!-- ==================== UPDOWN ==================== -->
+<section class="game g-coral" id="updown" style="--gx:12%">
   <div class="wrap">
-    <div class="g-grid reveal">
+    <div class="g-grid rv">
       <div class="copy">
-        <div class="g-head">
-          <span class="g-icon"><img src="icon-updown.webp" alt=""></span>
-          <div>
-            <span class="sub blue">Party Game</span>
-            <h3>Guess Words: UpDown</h3>
-          </div>
+        <span class="eyebrow coral">03 — Party Game</span>
+        <div class="g-title">
+          <span class="ic"><img src="icon-updown.webp" alt="" loading="lazy"></span>
+          <h3>Guess Words: UpDown</h3>
         </div>
-        <span class="land-note">🔄 Played in landscape — hold the phone up and go!</span>
-        <p class="lead">Split into teams, pick your categories, and race the clock. Teammates describe the big word on screen — guess it and tilt up, stuck and tilt down. Loudest team wins!</p>
-        <ul class="feats">
-          <li><span class="ico blue">🎉</span> Perfect for friends &amp; family</li>
-          <li><span class="ico blue">📱</span> Tilt up or down — hands-free scoring</li>
-          <li><span class="ico blue">🗂️</span> Movies, office, wedding, TV &amp; more</li>
-          <li><span class="ico blue">⚙️</span> Custom rounds, timers &amp; difficulty</li>
+        <span class="land-tip">🔄 Played in landscape — hold the phone up and go</span>
+        <p class="g-lead">Split into teams, pick your categories, and race the clock. Teammates describe the big word on screen — guess it and tilt up, stuck and tilt down. Loudest team wins.</p>
+        <ul class="g-feats">
+          <li><span class="k">🎉</span> Built for friends &amp; family nights</li>
+          <li><span class="k">📱</span> Tilt up or down — hands-free scoring</li>
+          <li><span class="k">🗂️</span> Movies, office, wedding, TV &amp; more</li>
+          <li><span class="k">⚙️</span> Custom rounds, timers &amp; difficulty</li>
         </ul>
-        <div class="badges">
-          <a class="store" href="#" onclick="return false;" aria-disabled="true">
-            <span class="glyph"></span>
-            <span><small>Download on the</small><strong>App Store</strong></span>
-          </a>
-          <a class="store" href="#" onclick="return false;" aria-disabled="true">
-            <span class="glyph">▶</span>
-            <span><small>Get it on</small><strong>Google Play</strong></span>
-          </a>
+        <div class="g-store">
+          <a class="store" href="#" onclick="return false;" aria-disabled="true"><span class="glyph"></span><span><small>Download on the</small><strong>App Store</strong></span></a>
+          <a class="store" href="#" onclick="return false;" aria-disabled="true"><span class="glyph">▶</span><span><small>Get it on</small><strong>Google Play</strong></span></a>
           <span class="soon">Coming soon</span>
         </div>
       </div>
       <div class="media">
-        <div class="shots-p">
-          <div class="ph"><img src="updown-team.webp" alt="Guess Words: UpDown — team ready screen" loading="lazy"></div>
-          <div class="ph"><img src="updown-categories.webp" alt="Guess Words: UpDown — categories" loading="lazy"></div>
+        <div class="phones">
+          <div class="phone"><img src="updown-team.webp" alt="Guess Words: UpDown team ready screen" loading="lazy"></div>
+          <div class="phone"><img src="updown-categories.webp" alt="Guess Words: UpDown categories" loading="lazy"></div>
         </div>
       </div>
     </div>
-    <div class="shots-l reveal">
-      <figure><img src="updown-tide.webp" alt="Gameplay — describing the word Tide" loading="lazy"><figcaption>Describe the big word</figcaption></figure>
-      <figure><img src="updown-correct.webp" alt="Correct answer screen" loading="lazy"><figcaption>Tilt up — correct!</figcaption></figure>
-      <figure><img src="updown-wrong.webp" alt="Wrong answer screen" loading="lazy"><figcaption>Tilt down — pass</figcaption></figure>
-      <figure><img src="updown-break.webp" alt="Break screen between turns" loading="lazy"><figcaption>Catch your breath between rounds</figcaption></figure>
+    <div class="wide-row rv">
+      <figure><img src="updown-tide.webp" alt="Gameplay — describing the word Tide" loading="lazy"><figcaption>Describe the word</figcaption></figure>
+      <figure><img src="updown-correct.webp" alt="Correct answer screen" loading="lazy"><figcaption>Tilt up — correct</figcaption></figure>
+      <figure><img src="updown-wrong.webp" alt="Pass screen" loading="lazy"><figcaption>Tilt down — pass</figcaption></figure>
+      <figure><img src="updown-break.webp" alt="Break screen between turns" loading="lazy"><figcaption>Breathe between rounds</figcaption></figure>
     </div>
   </div>
 </section>
 
-<!-- ================= TABUTABU ================= -->
-<section class="game-sec tinted" id="tabutabu">
+<!-- ==================== TABUTABU ==================== -->
+<section class="game g-violet" id="tabutabu" style="--gx:85%">
   <div class="wrap">
-    <div class="g-grid flip reveal">
+    <div class="g-grid flip rv">
       <div class="copy">
-        <div class="g-head">
-          <span class="g-icon"><img src="icon-tabutabu.webp" alt=""></span>
-          <div>
-            <span class="sub purple">Party Game</span>
-            <h3>Forbidden Words Game: TabuTabu</h3>
-          </div>
+        <span class="eyebrow violet">04 — Party Game</span>
+        <div class="g-title">
+          <span class="ic"><img src="icon-tabutabu.webp" alt="" loading="lazy"></span>
+          <h3>Forbidden Words Game: TabuTabu</h3>
         </div>
-        <p class="lead">The classic word-describing challenge, reimagined. Get your team to say the word on the card — but every card hides five forbidden words you're not allowed to use. Swipe right for a hit, left if you slip, up to pass.</p>
-        <ul class="feats">
-          <li><span class="ico purple">🚫</span> Five forbidden words per card</li>
-          <li><span class="ico purple">👆</span> Swipe to score — fast and intuitive</li>
-          <li><span class="ico purple">⚡</span> Power-ups: extra time, double points, new card</li>
-          <li><span class="ico purple">📊</span> Round summaries with every word you played</li>
+        <p class="g-lead">The classic word-describing challenge, reimagined. Get your team to say the word on the card — but every card hides five forbidden words you're not allowed to use. Swipe right for a hit, left if you slip, up to pass.</p>
+        <ul class="g-feats">
+          <li><span class="k">🚫</span> Five forbidden words on every card</li>
+          <li><span class="k">👆</span> Swipe to score — fast and intuitive</li>
+          <li><span class="k">⚡</span> Power-ups: extra time, double points, new card</li>
+          <li><span class="k">📊</span> Round summaries with every word you played</li>
         </ul>
-        <div class="badges">
-          <a class="store" href="#" onclick="return false;" aria-disabled="true">
-            <span class="glyph"></span>
-            <span><small>Download on the</small><strong>App Store</strong></span>
-          </a>
-          <a class="store" href="#" onclick="return false;" aria-disabled="true">
-            <span class="glyph">▶</span>
-            <span><small>Get it on</small><strong>Google Play</strong></span>
-          </a>
+        <div class="g-store">
+          <a class="store" href="#" onclick="return false;" aria-disabled="true"><span class="glyph"></span><span><small>Download on the</small><strong>App Store</strong></span></a>
+          <a class="store" href="#" onclick="return false;" aria-disabled="true"><span class="glyph">▶</span><span><small>Get it on</small><strong>Google Play</strong></span></a>
           <span class="soon">Coming soon</span>
         </div>
       </div>
       <div class="media">
-        <div class="shots-p">
-          <div class="ph"><img src="tabu-home.webp" alt="TabuTabu home screen with two teams" loading="lazy"></div>
-          <div class="ph"><img src="tabu-card.webp" alt="TabuTabu word card with forbidden words" loading="lazy"></div>
-          <div class="ph"><img src="tabu-summary.webp" alt="TabuTabu round summary" loading="lazy"></div>
+        <div class="phones">
+          <div class="phone"><img src="tabu-home.webp" alt="TabuTabu home screen with two teams" loading="lazy"></div>
+          <div class="phone"><img src="tabu-card.webp" alt="TabuTabu word card with forbidden words" loading="lazy"></div>
+          <div class="phone"><img src="tabu-summary.webp" alt="TabuTabu round summary" loading="lazy"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= SPEAK UP ================= -->
-<section class="game-sec night" id="speakup">
+<!-- ==================== SPEAK UP ==================== -->
+<section class="game g-gold" id="speakup" style="--gx:12%">
   <div class="wrap">
-    <div class="g-grid reveal">
+    <div class="g-grid rv">
       <div class="copy">
-        <div class="g-head">
-          <span class="g-icon"><img src="icon-speakup.webp" alt=""></span>
-          <div>
-            <span class="sub amber">Voice Game</span>
-            <h3>English Words: Speak Up</h3>
-          </div>
+        <span class="eyebrow gold">05 — Voice Game</span>
+        <div class="g-title">
+          <span class="ic"><img src="icon-speakup.webp" alt="" loading="lazy"></span>
+          <h3>English Words: Speak Up</h3>
         </div>
-        <p class="lead">Say the English word out loud and watch your rocket blast further into space. Real voice recognition turns every round into a fast, breathless dash for a new high score.</p>
-        <ul class="feats">
-          <li><span class="ico amber">🎤</span> Speak the word — real voice recognition</li>
-          <li><span class="ico amber">🚀</span> Right answers rocket you higher</li>
-          <li><span class="ico amber">❤️</span> Limited lives — every miss costs you</li>
-          <li><span class="ico amber">⭐</span> Chase your best distance &amp; score</li>
+        <p class="g-lead">Say the English word out loud and watch your rocket blast further into space. Real voice recognition turns every round into a fast, breathless dash for a new high score.</p>
+        <ul class="g-feats">
+          <li><span class="k">🎤</span> Speak the word — real voice recognition</li>
+          <li><span class="k">🚀</span> Right answers rocket you higher</li>
+          <li><span class="k">❤️</span> Limited lives — every miss costs you</li>
+          <li><span class="k">⭐</span> Chase your best distance &amp; score</li>
         </ul>
-        <div class="badges">
-          <a class="store" href="#" onclick="return false;" aria-disabled="true">
-            <span class="glyph"></span>
-            <span><small>Download on the</small><strong>App Store</strong></span>
-          </a>
-          <a class="store" href="#" onclick="return false;" aria-disabled="true">
-            <span class="glyph">▶</span>
-            <span><small>Get it on</small><strong>Google Play</strong></span>
-          </a>
+        <div class="g-store">
+          <a class="store" href="#" onclick="return false;" aria-disabled="true"><span class="glyph"></span><span><small>Download on the</small><strong>App Store</strong></span></a>
+          <a class="store" href="#" onclick="return false;" aria-disabled="true"><span class="glyph">▶</span><span><small>Get it on</small><strong>Google Play</strong></span></a>
           <span class="soon">Coming soon</span>
         </div>
       </div>
       <div class="media">
-        <div class="shots-p">
-          <div class="ph"><img src="speakup-play.webp" alt="English Words: Speak Up — say the word" loading="lazy"></div>
-          <div class="ph"><img src="speakup-correct.webp" alt="English Words: Speak Up — correct answer" loading="lazy"></div>
-          <div class="ph"><img src="speakup-result.webp" alt="English Words: Speak Up — new high score" loading="lazy"></div>
+        <div class="phones">
+          <div class="phone"><img src="speakup-play.webp" alt="English Words: Speak Up — say the word" loading="lazy"></div>
+          <div class="phone"><img src="speakup-correct.webp" alt="English Words: Speak Up — correct answer" loading="lazy"></div>
+          <div class="phone"><img src="speakup-result.webp" alt="English Words: Speak Up — new high score" loading="lazy"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
-<section id="about">
+<!-- ==================== ABOUT ==================== -->
+<section class="section" id="about">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="tag">About Us</span>
+    <div class="section-head rv">
+      <span class="eyebrow">The studio</span>
       <h2>We make fun games &amp; apps</h2>
       <p>Puhu Studios builds playful, beautifully crafted mobile games and apps — polished in every detail.</p>
     </div>
-    <div class="values">
-      <div class="val reveal">
-        <div class="big">🎨</div>
+    <div class="vals">
+      <div class="val rv">
+        <div class="k">🎨</div>
         <h3>Crafted, not churned</h3>
-        <p>Every screen is designed with care — juicy animations, soft colors, and details you can feel.</p>
+        <p>Every screen is designed with care — juicy animations, considered color, and details you can feel.</p>
       </div>
-      <div class="val reveal">
-        <div class="big">🎉</div>
+      <div class="val rv">
+        <div class="k">🎉</div>
         <h3>Fun first</h3>
-        <p>From quiet solo puzzles to loud party nights — our games are built around genuine moments of joy.</p>
+        <p>From quiet solo puzzles to loud party nights, our games are built around genuine moments of joy.</p>
       </div>
-      <div class="val reveal">
-        <div class="big">🌍</div>
+      <div class="val rv">
+        <div class="k">🌍</div>
         <h3>Play &amp; learn</h3>
-        <p>Our games sneak a little wonder into the fun — real places, real stories, real discoveries.</p>
+        <p>Our games sneak a little wonder into the fun — real places, real words, real discoveries.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
+<!-- ==================== CONTACT ==================== -->
 <section id="contact">
-  <div class="wrap reveal">
-    <h2>Say hello 👋</h2>
-    <p>Questions, feedback, or just want to tell us your favorite word to describe? We read everything.</p>
-    <a class="btn" href="mailto:puhustudios@gmail.com">Contact us</a>
+  <div class="wrap">
+    <div class="contact-inner rv">
+      <h2>Say hello 👋</h2>
+      <p>Questions, feedback, or just want to tell us your favorite word to describe? We read everything.</p>
+      <a class="btn btn-primary" href="mailto:puhustudios@gmail.com">Contact us</a>
+    </div>
   </div>
 </section>
 
 <footer>
-  <div class="f-logo">🦉 Puhu Studios</div>
-  <div>© <span id="year">2026</span> Puhu Studios. All rights reserved.</div>
-  <div class="legal">
-    <a href="terms.html">Terms of Use</a> ·
-    <a href="privacy.html">Privacy Policy</a>
+  <div class="wrap f-in">
+    <a class="logo" href="#top"><span class="logo-mark">🦉</span> Puhu Studios</a>
+    <div class="f-legal">
+      <a href="terms.html">Terms of Use</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:puhustudios@gmail.com">Contact</a>
+    </div>
+    <div class="f-copy">© <span id="year">2026</span> Puhu Studios</div>
   </div>
 </footer>
 
 <script>
+  /* theme toggle */
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('themeBtn');
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const syncMeta = () => {
+    if (meta) meta.setAttribute('content', root.getAttribute('data-theme') === 'dark' ? '#06080f' : '#ffffff');
+  };
+  syncMeta();
+  themeBtn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    syncMeta();
+    try { localStorage.setItem('puhu-theme', next); } catch(e) {}
+  });
+
+  /* header state */
   const bar = document.getElementById('topbar');
-  const onScroll = () => bar.classList.toggle('scrolled', window.scrollY > 24);
+  const onScroll = () => bar.classList.toggle('scrolled', window.scrollY > 20);
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
+  /* reveal on scroll */
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-  }), {threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  }), {threshold:.1});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
